@@ -29,7 +29,7 @@
 
     /* HERO CON DOS FOTOS */
     header { 
-      height: 75vh; min-height: 500px;
+      height: 85vh; min-height: 600px; /* Aumentado para dar aire al countdown */
       position: relative;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; color: white; overflow: hidden;
@@ -44,25 +44,26 @@
       filter: brightness(0.65);
     }
     header h1, header p, .countdown-container { position: relative; z-index: 2; color: white; margin: 0; }
-    header h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
-    header p { font-size: 1.3rem; margin-top: 10px; letter-spacing: 2px; }
+    header h1 { font-size: clamp(2.8rem, 9vw, 5rem); text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
+    header p { font-size: 1.4rem; margin-top: 10px; letter-spacing: 3px; }
 
-    /* COUNTDOWN */
-    .countdown-container { margin-top: 40px; }
-    .countdown { display: flex; justify-content: center; gap: 15px; }
+    /* COUNTDOWN MÁS GRANDE Y MÁS ABAJO */
+    .countdown-container { margin-top: 80px; } /* Bajado de 40px a 80px */
+    .countdown { display: flex; justify-content: center; gap: 20px; }
     .circle { 
-      width: 70px; height: 70px; border-radius: 50%; 
-      background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px);
+      width: 95px; height: 95px; border-radius: 50%; /* Círculos más grandes */
+      background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px);
       display: flex; flex-direction: column; align-items: center; justify-content: center; 
-      border: 1px solid rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.4);
     }
-    .circle span { font-size: 1.3rem; font-weight: bold; }
-    .circle small { font-size: 0.6rem; text-transform: uppercase; }
+    .circle span { font-size: 1.8rem; font-weight: bold; line-height: 1; }
+    .circle small { font-size: 0.7rem; text-transform: uppercase; margin-top: 5px; }
 
-    section { padding: 80px 20px; max-width: 1100px; margin: auto; }
+    /* ESPACIO REDUCIDO ENTRE SECCIONES */
+    section { padding: 40px 20px; max-width: 1100px; margin: auto; } /* Reducido de 80px a 40px */
 
     /* ITINERARIO */
-    .itinerario-grid { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 30px; }
+    .itinerario-grid { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 25px; }
     .itinerario-item { 
       background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
       width: 100%; max-width: 550px; display: flex; flex-direction: column; align-items: center; text-align: center;
@@ -79,9 +80,9 @@
 
     /* BOTÓN RSVP */
     .rsvp-box { 
-      background: white; padding: 50px 20px; border-radius: 20px; 
+      background: white; padding: 40px 20px; border-radius: 20px; 
       box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; 
-      max-width: 600px; margin: 40px auto; border: 1px solid var(--rosa);
+      max-width: 600px; margin: 30px auto; border: 1px solid var(--rosa);
     }
     .btn-google { 
       background: var(--dorado); color: white; padding: 18px 40px; 
@@ -91,7 +92,7 @@
     }
     .btn-google:hover { transform: translateY(-3px); background: #dcb386; }
 
-    footer { text-align: center; padding: 40px; background: #fff; border-top: 1px solid #eee; font-size: 0.9rem; }
+    footer { text-align: center; padding: 30px; background: #fff; border-top: 1px solid #eee; font-size: 0.9rem; }
   </style>
 </head>
 <body>
@@ -227,7 +228,7 @@
       santander: "Scopri Santander", faro_desc: "Viste spettacolari.", sardinero_desc: "Spiaggia emblematica.", magdalena_desc: "Palazzo reale.", 
       vecinos_titulo: "Dintorni incantevoli", santillana_desc: "Borgo medievale.", comillas_desc: "Architettura modernista.", potes_desc: "Picos de Europa.",
       ciudades_titulo: "Città vicine", bilbao_desc: "Museo Guggenheim.", sanse_desc: "Spiaggia della Concha.", asturias_desc: "Fascino asturiano.",
-      confirmar: "Sarai dei nostri?", rsvp_p: "Per favore, conferma la tua presenza tramite il modulo:", confirm_btn: "Confermare Partecipazione", time: ["Giorni","Ore","Min","Sec"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️"
+      confirmar: "Sarai dei nostri?", rsvp_p: "Per favore, confirma la tua presenza tramite il modulo:", confirm_btn: "Confermare Partecipazione", time: ["Giorni","Ore","Min","Sec"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️"
     }
   };
 
@@ -258,4 +259,3 @@
 </script>
 </body>
 </html>
-
