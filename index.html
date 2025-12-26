@@ -47,23 +47,23 @@
     header h1 { font-size: clamp(2.8rem, 9vw, 5.5rem); text-shadow: 2px 2px 15px rgba(0,0,0,0.4); }
     header p { font-size: 1.4rem; margin-top: 10px; letter-spacing: 3px; font-weight: 300; }
 
-    /* SECCIÓN COUNTDOWN (FUERA DEL HERO) */
+    /* SECCIÓN COUNTDOWN (FONDO INTEGRADO) */
     .countdown-section {
-      background: white;
-      padding: 60px 20px;
+      background: var(--blanco); /* Fondo igual al resto de la página */
+      padding: 60px 20px 40px 20px;
       text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     }
-    .countdown-section h2 { margin-bottom: 30px; font-size: 2.2rem; }
+    .countdown-section h2 { margin-bottom: 35px; font-size: 2.2rem; }
     .countdown { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
     .circle { 
-      width: 100px; height: 100px; border-radius: 50%;
-      background: var(--blanco);
+      width: 105px; height: 105px; border-radius: 50%;
+      background: white; /* Círculos en blanco para que resalten sobre el crema */
       display: flex; flex-direction: column; align-items: center; justify-content: center; 
-      border: 1px solid var(--dorado);
+      border: 2px solid var(--dorado);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       color: var(--negro-suave);
     }
-    .circle span { font-size: 2rem; font-weight: bold; line-height: 1; color: var(--dorado); }
+    .circle span { font-size: 2.2rem; font-weight: bold; line-height: 1; color: var(--dorado); }
     .circle small { font-size: 0.75rem; text-transform: uppercase; margin-top: 5px; color: var(--gris); }
 
     /* ESPACIO REDUCIDO ENTRE SECCIONES */
