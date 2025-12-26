@@ -27,61 +27,71 @@
     nav li:hover { color: var(--dorado); }
     .lang-switch { font-weight: bold; color: var(--dorado); cursor: pointer; }
 
-    /* HERO */
+    /* HERO CON DOS FOTOS */
     header { 
-      height: 65vh; min-height: 400px;
-      background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.5)), 
-                  url("IMG/WhatsApp Image 2025-12-26 at 15.49.07.jpeg") center/cover no-repeat; 
-      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 60px;
+      height: 75vh; min-height: 500px;
+      position: relative;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; color: white; overflow: hidden;
     }
-    header h1 { font-size: clamp(2rem, 7vw, 4rem); margin-bottom: 10px; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); color: white; }
-    header p { font-size: 1.2rem; margin-bottom: 20px; }
+    .hero-images {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; z-index: 1;
+    }
+    .hero-img {
+      width: 50%; height: 100%;
+      background-size: cover; background-position: center;
+      filter: brightness(0.65); /* Oscurece las fotos para leer el texto */
+    }
+    header h1, header p, .countdown-container { position: relative; z-index: 2; color: white; margin: 0; }
+    header h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
+    header p { font-size: 1.3rem; margin-top: 10px; letter-spacing: 2px; }
 
-    .countdown-container { margin-top: auto; padding-bottom: 30px; width: 100%; }
-    .countdown { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    /* COUNTDOWN DENTRO DEL HERO */
+    .countdown-container { margin-top: 40px; }
+    .countdown { display: flex; justify-content: center; gap: 15px; }
     .circle { 
-      width: 65px; height: 65px; border-radius: 50%; 
-      background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px);
+      width: 70px; height: 70px; border-radius: 50%; 
+      background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px);
       display: flex; flex-direction: column; align-items: center; justify-content: center; 
-      border: 1px solid rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.3);
     }
-    .circle span { font-size: 1.2rem; font-weight: bold; }
+    .circle span { font-size: 1.3rem; font-weight: bold; }
     .circle small { font-size: 0.6rem; text-transform: uppercase; }
 
-    section { padding: 60px 20px; max-width: 1100px; margin: auto; }
+    section { padding: 80px 20px; max-width: 1100px; margin: auto; }
 
     /* ITINERARIO */
     .itinerario-grid { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 30px; }
     .itinerario-item { 
       background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-      width: 100%; max-width: 550px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 10px; border-top: 5px solid var(--dorado); text-align: center;
+      width: 100%; max-width: 550px; display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: 10px; border-top: 5px solid var(--dorado);
     }
     .it-icon { font-size: 2rem; color: var(--dorado); }
     .it-info .hora { font-weight: 700; color: var(--dorado); display: block; font-size: 1.2rem; }
-    .it-info p { margin: 0; font-weight: 500; font-size: 1.1rem; }
 
     /* TURISMO */
     .grid-turismo { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
     .card-turismo { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--dorado); }
-    .card-turismo img { width: 100%; height: 180px; object-fit: cover; background: #eee; }
+    .card-turismo img { width: 100%; height: 200px; object-fit: cover; }
     .info-turismo { padding: 20px; }
 
-    /* SECCIÓN RSVP / GOOGLE FORM */
+    /* BOTÓN RSVP GOOGLE */
     .rsvp-box { 
-      background: white; padding: 40px; border-radius: 20px; 
+      background: white; padding: 50px 20px; border-radius: 20px; 
       box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; 
-      max-width: 600px; margin: 20px auto; border: 1px solid var(--rosa);
+      max-width: 600px; margin: 40px auto; border: 1px solid var(--rosa);
     }
     .btn-google { 
-      background: var(--dorado); color: white; padding: 18px 35px; 
+      background: var(--dorado); color: white; padding: 18px 40px; 
       border-radius: 50px; text-decoration: none; font-weight: bold; 
-      display: inline-block; margin-top: 20px; transition: 0.3s;
+      display: inline-block; margin-top: 25px; transition: 0.3s;
       font-size: 1.1rem; box-shadow: 0 4px 15px rgba(232, 195, 154, 0.4);
     }
-    .btn-google:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(232, 195, 154, 0.6); }
+    .btn-google:hover { transform: translateY(-3px); background: #dcb386; }
 
-    footer { text-align: center; padding: 40px; background: #fff; border-top: 1px solid #eee; }
+    footer { text-align: center; padding: 40px; background: #fff; border-top: 1px solid #eee; font-size: 0.9rem; }
   </style>
 </head>
 <body>
@@ -100,8 +110,14 @@
 </nav>
 
 <header id="home">
-  <h1>Claudia & Alberto 💕</h1>
-  <p data-i18n="date">01 de agosto de 2026 · Puente Arce</p>
+  <div class="hero-images">
+    <div class="hero-img" style="background-image: url('img/foto1.jpg');"></div>
+    <div class="hero-img" style="background-image: url('img/foto2.jpg'); border-left: 2px solid var(--blanco);"></div>
+  </div>
+
+  <h1 data-i18n="names">Claudia & Alberto 💕</h1>
+  <p data-i18n="date">01 DE AGOSTO DE 2026 · PUENTE ARCE</p>
+  
   <div class="countdown-container">
     <div id="countdown" class="countdown"></div>
   </div>
@@ -133,33 +149,33 @@
   <h2 data-i18n="santander">Qué hacer en Santander</h2>
   <div class="grid-turismo">
     <div class="card-turismo">
-      <img src="IMG/santander-cantabria-hd.jpg">
+      <img src="img/faro.jpg" alt="Faro">
       <div class="info-turismo"><h4>Faro Cabo Mayor</h4><p data-i18n="faro_desc">Vistas espectaculares del mar Cantábrico.</p></div>
     </div>
     <div class="card-turismo">
-      <img src="IMG/santander-cantabria-hd.jpg">
+      <img src="img/sardinero.jpg" alt="Sardinero">
       <div class="info-turismo"><h4>Playa del Sardinero</h4><p data-i18n="sardinero_desc">La playa más emblemática y elegante.</p></div>
     </div>
     <div class="card-turismo">
-      <img src="https://images.unsplash.com/photo-1590001158193-79cd272d3701?auto=format&fit=crop&q=80&w=600">
-      <div class="info-turismo"><h4>Palacio de La Magdalena</h4><p data-i18n="magdalena_desc">Antigua residencia real y símbolo local.</p></div>
+      <img src="img/magdalena.jpg" alt="Magdalena">
+      <div class="info-turismo"><h4>Palacio de La Magdalena</h4><p data-i18n="magdalena_desc">Símbolo local y antigua residencia real.</p></div>
     </div>
   </div>
 </section>
 
 <section id="vecinos">
-  <h2 data-i18n="vecinos_titulo">Lugares con encanto en Cantabria</h2>
+  <h2 data-i18n="vecinos_titulo">Cantabria Infinita</h2>
   <div class="grid-turismo">
     <div class="card-turismo">
-      <img src="https://images.unsplash.com/photo-1629127532791-c116c7477382?auto=format&fit=crop&q=80&w=600">
+      <img src="img/santillana.jpg" alt="Santillana">
       <div class="info-turismo"><h4>Santillana del Mar</h4><p data-i18n="santillana_desc">Villa medieval perfectamente conservada.</p></div>
     </div>
     <div class="card-turismo">
-      <img src="https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&q=80&w=600">
-      <div class="info-turismo"><h4>Comillas</h4><p data-i18n="comillas_desc">Arquitectura modernista y el Capricho de Gaudí.</p></div>
+      <img src="img/comillas.jpg" alt="Comillas">
+      <div class="info-turismo"><h4>Comillas</h4><p data-i18n="comillas_desc">Arquitectura modernista y Capricho de Gaudí.</p></div>
     </div>
     <div class="card-turismo">
-      <img src="https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&q=80&w=600">
+      <img src="img/potes.jpg" alt="Potes">
       <div class="info-turismo"><h4>Potes</h4><p data-i18n="potes_desc">Corazón de los Picos de Europa.</p></div>
     </div>
   </div>
@@ -169,16 +185,16 @@
   <h2 data-i18n="ciudades_titulo">Ciudades próximas</h2>
   <div class="grid-turismo">
     <div class="card-turismo">
-      <img src="https://images.unsplash.com/photo-1564344738734-b258670a6c0b?auto=format&fit=crop&q=80&w=600">
+      <img src="img/bilbao.jpg" alt="Bilbao">
       <div class="info-turismo"><h4>Bilbao</h4><p data-i18n="bilbao_desc">Museo Guggenheim y Casco Viejo.</p></div>
     </div>
     <div class="card-turismo">
-      <img src="https://images.unsplash.com/photo-1601334645511-209c3140b991?auto=format&fit=crop&q=80&w=600">
+      <img src="img/sanse.jpg" alt="San Sebastián">
       <div class="info-turismo"><h4>San Sebastián</h4><p data-i18n="sanse_desc">Playa de la Concha y alta gastronomía.</p></div>
     </div>
     <div class="card-turismo">
-      <img src="https://images.unsplash.com/photo-1600216238618-2e389d0426f4?auto=format&fit=crop&q=80&w=600">
-      <div class="info-turismo"><h4>Gijón / Oviedo</h4><p data-i18n="asturias_desc">Sidrerías y encanto asturiano.</p></div>
+      <img src="img/asturias.jpg" alt="Asturias">
+      <div class="info-turismo"><h4>Asturias</h4><p data-i18n="asturias_desc">Sidrerías y paisajes verdes increíbles.</p></div>
     </div>
   </div>
 </section>
@@ -188,7 +204,7 @@
     <h2 data-i18n="confirmar">¿Nos acompañas?</h2>
     <p data-i18n="rsvp_p">Por favor, confirma tu asistencia antes del 1 de junio de 2026.</p>
     <a href="https://forms.gle/2uurApQkp68dGx13A" target="_blank" class="btn-google" data-i18n="confirm_btn">
-      <i class="fa-solid fa-pen-to-square"></i> Confirmar Asistencia
+      <i class="fa-solid fa-calendar-check"></i> Confirmar en Google Forms
     </a>
   </div>
 </section>
@@ -199,15 +215,15 @@
   const translations = {
     es: { 
       nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_santander: "Santander", nav_cantabria: "Cantabria", nav_ciudades: "Ciudades", nav_asistencia: "Asistencia",
-      date: "01/08/2026 · Puente Arce", itinerario: "Itinerario", ceremonia: "Ceremonia civil", cocktail: "Cóctel", banquete: "Banquete", baile: "Baile y fiesta", 
+      date: "01/08/2026 · PUENTE ARCE", itinerario: "Itinerario", ceremonia: "Ceremonia civil", cocktail: "Cóctel", banquete: "Banquete", baile: "Baile y fiesta", 
       santander: "Qué hacer en Santander", faro_desc: "Vistas espectaculares.", sardinero_desc: "Playa emblemática.", magdalena_desc: "Palacio real.", 
       vecinos_titulo: "Alrededores con encanto", santillana_desc: "Villa medieval.", comillas_desc: "Arquitectura modernista.", potes_desc: "Picos de Europa.",
-      ciudades_titulo: "Ciudades próximas", bilbao_desc: "Museo Guggenheim.", sanse_desc: "Playa de la Concha.", asturias_desc: "Fascino asturiano.",
+      ciudades_titulo: "Ciudades próximas", bilbao_desc: "Museo Guggenheim.", sanse_desc: "Playa de la Concha.", asturias_desc: "Encanto asturiano.",
       confirmar: "¿Nos acompañas?", rsvp_p: "Confirma tu asistencia en el siguiente formulario:", confirm_btn: "Confirmar Asistencia", time: ["Días","Hrs","Min","Seg"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️"
     },
     it: { 
       nav_inicio: "Inizio", nav_itinerario: "Programma", nav_santander: "Santander", nav_cantabria: "Cantabria", nav_ciudades: "Città", nav_asistencia: "Partecipazione",
-      date: "01/08/2026 · Puente Arce", itinerario: "Programma", ceremonia: "Cerimonia civile", cocktail: "Aperitivo", banquete: "Banchetto", baile: "Festa", 
+      date: "01/08/2026 · PUENTE ARCE", itinerario: "Programma", ceremonia: "Cerimonia civile", cocktail: "Aperitivo", banquete: "Banchetto", baile: "Festa", 
       santander: "Scopri Santander", faro_desc: "Viste spettacolari.", sardinero_desc: "Spiaggia emblematica.", magdalena_desc: "Palazzo reale.", 
       vecinos_titulo: "Dintorni incantevoli", santillana_desc: "Borgo medievale.", comillas_desc: "Architettura modernista.", potes_desc: "Picos de Europa.",
       ciudades_titulo: "Città vicine", bilbao_desc: "Museo Guggenheim.", sanse_desc: "Spiaggia della Concha.", asturias_desc: "Fascino asturiano.",
@@ -241,6 +257,4 @@
   updateCountdown();
 </script>
 </body>
-
 </html>
-
