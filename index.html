@@ -23,11 +23,11 @@
     /* NAVBAR */
     nav { position: fixed; top: 0; width: 100%; background: rgba(255,248,240,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; }
     nav ul { display: flex; justify-content: center; gap: 10px; list-style: none; padding: 12px; margin: 0; flex-wrap: wrap; }
-    nav li { cursor: pointer; font-size: 14px; padding: 5px 10px; transition: 0.3s; }
+    nav li { cursor: pointer; font-size: 14px; padding: 5px 10px; transition: 0.3s; font-weight: bold; text-transform: uppercase; }
     nav li:hover { color: var(--dorado); }
-    .lang-switch { font-weight: bold; color: var(--dorado); cursor: pointer; }
+    .lang-switch { color: var(--dorado); cursor: pointer; border-left: 1px solid #ddd; padding-left: 15px !important; }
 
-    /* HERO CON DOS FOTOS */
+    /* HERO */
     header { 
       height: 70vh; min-height: 500px;
       position: relative;
@@ -59,29 +59,19 @@
     .circle small { font-size: 0.75rem; text-transform: uppercase; margin-top: 5px; color: var(--gris); }
 
     /* ITINERARIO */
+    section { padding: 40px 20px; max-width: 800px; margin: auto; }
     .itinerario-grid { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 25px; }
     .itinerario-item { 
       background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
       width: 100%; max-width: 550px; display: flex; flex-direction: column; align-items: center; text-align: center;
       gap: 10px; border-top: 5px solid var(--dorado);
     }
-    
-    /* ESTILO PARA LOS ICONOS PNG PERSONALIZADOS */
     .it-icon { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
     .it-img { 
       width: 45px; height: 45px; object-fit: contain;
-      /* Filtro para convertir la imagen a color dorado #E8C39A */
       filter: invert(86%) sepia(13%) saturate(1048%) hue-rotate(331deg) brightness(97%) contrast(91%);
     }
-
     .it-info .hora { font-weight: 700; color: var(--dorado); display: block; font-size: 1.2rem; }
-
-    /* TURISMO */
-    section { padding: 40px 20px; max-width: 1100px; margin: auto; }
-    .grid-turismo { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
-    .card-turismo { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--dorado); }
-    .card-turismo img { width: 100%; height: 200px; object-fit: cover; }
-    .info-turismo { padding: 20px; }
 
     /* RSVP */
     .rsvp-box { 
@@ -106,9 +96,7 @@
   <ul>
     <li onclick="scrollToId('home')" data-i18n="nav_inicio">Inicio</li>
     <li onclick="scrollToId('itinerario')" data-i18n="nav_itinerario">Itinerario</li>
-    <li onclick="scrollToId('santander')" data-i18n="nav_santander">Santander</li>
-    <li onclick="scrollToId('vecinos')" data-i18n="nav_cantabria">Cantabria</li>
-    <li onclick="scrollToId('ciudades')" data-i18n="nav_ciudades">Ciudades</li>
+    <li onclick="window.location.href='turismo.html'" data-i18n="nav_turismo">Turismo</li>
     <li onclick="scrollToId('rsvp')" data-i18n="nav_asistencia">Asistencia</li>
     <li class="lang-switch" onclick="setLang('es')">ES</li>
     <li class="lang-switch" onclick="setLang('it')">IT</li>
@@ -132,80 +120,21 @@
 <section id="itinerario">
   <h2 data-i18n="itinerario">Itinerario del Gran Día</h2>
   <div class="itinerario-grid">
-    
     <div class="itinerario-item">
       <div class="it-icon"><img src="IMG/marriage.png" class="it-img" alt="Ceremonia"></div>
       <div class="it-info"><span class="hora">12:30</span><p data-i18n="ceremonia">Ceremonia civil</p></div>
     </div>
-
     <div class="itinerario-item">
       <div class="it-icon"><img src="IMG/cheers.png" class="it-img" alt="Cocktail"></div>
       <div class="it-info"><span class="hora">13:30</span><p data-i18n="cocktail">Cóctel de bienvenida</p></div>
     </div>
-
     <div class="itinerario-item">
       <div class="it-icon"><img src="IMG/banquet.png" class="it-img" alt="Banquete"></div>
       <div class="it-info"><span class="hora">14:30</span><p data-i18n="banquete">Banquete nupcial</p></div>
     </div>
-
     <div class="itinerario-item">
       <div class="it-icon"><img src="IMG/disco-ball.png" class="it-img" alt="Fiesta"></div>
       <div class="it-info"><span class="hora">19:00</span><p data-i18n="baile">Baile y barra libre</p></div>
-    </div>
-
-  </div>
-</section>
-
-<section id="santander">
-  <h2 data-i18n="santander">Qué hacer en Santander</h2>
-  <div class="grid-turismo">
-    <div class="card-turismo">
-      <img src="IMG/faro.jpg" alt="Faro">
-      <div class="info-turismo"><h4>Faro Cabo Mayor</h4><p data-i18n="faro_desc">Vistas espectaculares del mar Cantábrico.</p></div>
-    </div>
-    <div class="card-turismo">
-      <img src="IMG/sardinero.jpg" alt="Sardinero">
-      <div class="info-turismo"><h4>Playa del Sardinero</h4><p data-i18n="sardinero_desc">La playa más emblemática y elegante.</p></div>
-    </div>
-    <div class="card-turismo">
-      <img src="IMG/magdalena.jpg" alt="Magdalena">
-      <div class="info-turismo"><h4>Palacio de La Magdalena</h4><p data-i18n="magdalena_desc">Símbolo local y antigua residencia real.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="vecinos">
-  <h2 data-i18n="vecinos_titulo">Cantabria Infinita</h2>
-  <div class="grid-turismo">
-    <div class="card-turismo">
-      <img src="IMG/santillana.jpg" alt="Santillana">
-      <div class="info-turismo"><h4>Santillana del Mar</h4><p data-i18n="santillana_desc">Villa medieval perfectamente conservada.</p></div>
-    </div>
-    <div class="card-turismo">
-      <img src="IMG/comillas.jpg" alt="Comillas">
-      <div class="info-turismo"><h4>Comillas</h4><p data-i18n="comillas_desc">Arquitectura modernista y Capricho de Gaudí.</p></div>
-    </div>
-    <div class="card-turismo">
-      <img src="IMG/potes.jpg" alt="Potes">
-      <div class="info-turismo"><h4>Potes</h4><p data-i18n="potes_desc">Corazón de los Picos de Europa.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="ciudades">
-  <h2 data-i18n="ciudades_titulo">Ciudades próximas</h2>
-  <div class="grid-turismo">
-    <div class="card-turismo">
-      <img src="IMG/bilbao.jpg" alt="Bilbao">
-      <div class="info-turismo"><h4>Bilbao</h4><p data-i18n="bilbao_desc">Museo Guggenheim y Casco Viejo.</p></div>
-    </div>
-    <div class="card-turismo">
-      <img src="IMG/sanse.jpg" alt="San Sebastián">
-      <div class="info-turismo"><h4>San Sebastián</h4><p data-i18n="sanse_desc">Playa de la Concha y alta gastronomía.</p></div>
-    </div>
-    <div class="card-turismo">
-      <img src="IMG/asturias.jpg" alt="Asturias">
-      <div class="info-turismo"><h4>Asturias</h4><p data-i18n="asturias_desc">Sidrerías y paisajes verdes increíbles.</p></div>
     </div>
   </div>
 </section>
@@ -225,20 +154,18 @@
 <script>
   const translations = {
     es: { 
-      nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_santander: "Santander", nav_cantabria: "Cantabria", nav_ciudades: "Ciudades", nav_asistencia: "Asistencia",
-      date: "PUENTE ARCE", nos_casamos: "¡Nos casamos el 1 de agosto!", itinerario: "Itinerario del Gran Día", ceremonia: "Ceremonia civil", cocktail: "Cóctel de bienvenida", banquete: "Banquete nupcial", baile: "Baile y barra libre", 
-      santander: "Qué hacer en Santander", faro_desc: "Vistas espectaculares.", sardinero_desc: "Playa emblemática.", magdalena_desc: "Palacio real.", 
-      vecinos_titulo: "Cantabria Infinita", santillana_desc: "Villa medieval.", comillas_desc: "Arquitectura modernista.", potes_desc: "Picos de Europa.",
-      ciudades_titulo: "Ciudades próximas", bilbao_desc: "Museo Guggenheim.", sanse_desc: "Playa de la concha.", asturias_desc: "Encanto asturiano.",
-      confirmar: "¿Nos acompañas?", rsvp_p: "Confirma tu asistencia antes del 1 de junio de 2026.", confirm_btn: "Confirmar Asistencia", time: ["Días","Hrs","Min","Seg"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️"
+      nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_turismo: "Turismo", nav_asistencia: "Asistencia",
+      date: "PUENTE ARCE", nos_casamos: "¡Nos casamos el 1 de agosto!", itinerario: "Itinerario del Gran Día", 
+      ceremonia: "Ceremonia civil", cocktail: "Cóctel de bienvenida", banquete: "Banquete nupcial", baile: "Baile y barra libre", 
+      confirmar: "¿Nos acompañas?", rsvp_p: "Confirma tu asistencia antes del 1 de junio de 2026.", 
+      confirm_btn: "Confirmar Asistencia", time: ["Días","Hrs","Min","Seg"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️"
     },
     it: { 
-      nav_inicio: "Inizio", nav_itinerario: "Programma", nav_santander: "Santander", nav_cantabria: "Cantabria", nav_ciudades: "Città", nav_asistencia: "Partecipazione",
-      date: "PUENTE ARCE", nos_casamos: "Ci sposiamo il 1° agosto!", itinerario: "Programma del Grande Giorno", ceremonia: "Cerimonia civile", cocktail: "Aperitivo di benvenuto", banquete: "Banchetto nuziale", baile: "Festa e open bar", 
-      santander: "Cosa fare a Santander", faro_desc: "Viste spettacolari.", sardinero_desc: "Spiaggia emblematica.", magdalena_desc: "Palazzo reale.", 
-      vecinos_titulo: "Cantabria Infinita", santillana_desc: "Borgo medievale.", comillas_desc: "Architettura modernista.", potes_desc: "Picos de Europa.",
-      ciudades_titulo: "Città vicine", bilbao_desc: "Museo Guggenheim.", sanse_desc: "Spiaggia della Concha.", asturias_desc: "Fascino asturiano.",
-      confirmar: "Sarai dei nostri?", rsvp_p: "Per favore, conferma la tua presenza entro el 1° giugno 2026.", confirm_btn: "Confermare Partecipazione", time: ["Giorni","Ore","Min","Sec"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️"
+      nav_inicio: "Inizio", nav_itinerario: "Programma", nav_turismo: "Turismo", nav_asistencia: "Partecipazione",
+      date: "PUENTE ARCE", nos_casamos: "Ci sposiamo il 1° agosto!", itinerario: "Programma del Grande Giorno", 
+      ceremonia: "Cerimonia civile", cocktail: "Aperitivo di benvenuto", banquete: "Banchetto nuziale", baile: "Festa e open bar", 
+      confirmar: "Sarai dei nostri?", rsvp_p: "Per favore, conferma la tua presenza entro el 1° giugno 2026.", 
+      confirm_btn: "Confermare Partecipazione", time: ["Giorni","Ore","Min","Sec"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️"
     }
   };
 
