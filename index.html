@@ -37,7 +37,7 @@
     .hero-img { width: 50%; height: 100%; background-size: cover; background-position: center; filter: brightness(0.7); }
     header h1, header p { position: relative; z-index: 2; color: white; margin: 0; }
     header h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); text-shadow: 2px 2px 15px rgba(0,0,0,0.4); }
-    header p { font-size: 1.2rem; margin-top: 5px; letter-spacing: 3px; font-weight: 300; }
+    header p { font-size: 1.4rem; margin-top: 10px; letter-spacing: 4px; font-weight: 400; font-family: 'Playfair Display', serif; }
 
     /* SECCIONES COMPACTAS */
     section { padding: 30px 20px; max-width: 800px; margin: auto; }
@@ -54,7 +54,7 @@
     .circle small { font-size: 0.65rem; text-transform: uppercase; color: var(--gris); }
 
     /* BIENVENIDA */
-    .welcome-text { text-align: center; font-size: 1.1rem; font-style: italic; max-width: 600px; margin: 0 auto; line-height: 1.4; }
+    .welcome-text { text-align: center; font-size: 1.1rem; font-style: italic; max-width: 600px; margin: 0 auto; line-height: 1.4; color: var(--gris); }
 
     /* TARJETAS */
     .card-container { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 20px; }
@@ -112,7 +112,7 @@
     <div class="hero-img" style="background-image: url('IMG/foto2.jpeg'); border-left: 2px solid var(--blanco);"></div>
   </div>
   <h1 data-i18n="names">Claudia & Alberto 💕</h1>
-  <p data-i18n="date">PUENTE ARCE</p>
+  <p data-i18n="hero_date">01 . 08 . 2026</p>
 </header>
 
 <section class="countdown-section">
@@ -141,9 +141,9 @@
   <div style="text-align: center;">
     <p style="margin-bottom: 10px;"><strong>Restaurante El Nuevo Molino</strong><br>Puente Arce, Cantabria</p>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2894.4939762141977!2d-3.9392265234251785!3d43.429447466795495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4ec73199852f53%3A0x9d72491a1351df98!2sRestaurante%20El%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2899.82424169603!2d-3.939109023418598!3d43.3702581708849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e47858c97356b%3A0x95971a17e089608!2sEl%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1710000000000!5m2!1ses!2ses"></iframe>
     </div>
-    <a href="https://maps.app.goo.gl/yLz7C8yWnQfX68P48" target="_blank" class="btn-main" data-i18n="como_llegar">
+    <a href="https://maps.app.goo.gl/hGzN2zJk8PzP7U6L7" target="_blank" class="btn-main" data-i18n="como_llegar">
       <i class="fa-solid fa-location-dot"></i> Cómo llegar
     </a>
   </div>
@@ -178,7 +178,7 @@
   const translations = {
     es: { 
       nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_regalo: "Regalo", nav_asistencia: "Asistencia", nav_info: "Información Adicional", nav_ubicacion: "Ubicación",
-      date: "PUENTE ARCE", nos_casamos: "¡Nos casamos el 1 de agosto!", itinerario: "Itinerario", 
+      hero_date: "01 . 08 . 2026", nos_casamos: "¡Nos casamos el 1 de agosto!", itinerario: "Itinerario", 
       bienvenida_texto: "“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables. ¡Estamos deseando celebrar nuestro gran día con todos vosotros!”",
       ceremonia: "Ceremonia civil", cocktail: "Cóctel de bienvenida", banquete: "Banquete nupcial", baile: "Baile y barra libre", 
       ubicacion_titulo: "Ubicación", como_llegar: "Cómo llegar",
@@ -189,7 +189,7 @@
     },
     it: { 
       nav_inicio: "Inizio", nav_itinerario: "Programma", nav_regalo: "Regalo", nav_asistencia: "Partecipazione", nav_info: "Informazioni", nav_ubicacion: "Ubicazione",
-      date: "PUENTE ARCE", nos_casamos: "Ci sposiamo il 1° agosto!", itinerario: "Programma", 
+      hero_date: "01 . 08 . 2026", nos_casamos: "Ci sposiamo il 1° agosto!", itinerario: "Programma", 
       bienvenida_texto: "“Ci sono momenti nella vita che sono speciali di per sé, ma condividerli con le persone che amiamo di più li rende indimenticabili. Non vediamo l'ora di festeggiare il nostro grande giorno con tutti voi!”",
       ceremonia: "Cerimonia civile", cocktail: "Aperitivo di benvenuto", banquete: "Banchetto nuziale", baile: "Festa e open bar", 
       ubicacion_titulo: "Ubicazione", como_llegar: "Come arrivare",
