@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turismo | Claudia & Alberto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --blanco: #FFF8F0; --dorado: #E8C39A; --gris: #555; --negro-suave: #333; --rosa: #F8E1E9; }
+    body { margin: 0; font-family: 'Lato', sans-serif; background: var(--blanco); color: var(--gris); }
+    nav { position: fixed; top: 0; width: 100%; background: rgba(255,248,240,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; }
+    nav ul { display: flex; justify-content: center; gap: 10px; list-style: none; padding: 12px; margin: 0; }
+    nav li { cursor: pointer; font-size: 14px; padding: 5px 10px; font-weight: bold; text-transform: uppercase; color: var(--negro-suave); }
+    nav a { text-decoration: none; color: inherit; }
+    .header-turismo { padding: 120px 20px 60px; background: var(--rosa); text-align: center; }
+    section { padding: 60px 20px; max-width: 1100px; margin: auto; }
+    .grid-turismo { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .card-turismo { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--dorado); text-align: center; }
+    .card-turismo img { width: 100%; height: 220px; object-fit: cover; }
+    .info-turismo { padding: 20px; }
+    .btn-back { display: inline-block; margin-top: 40px; padding: 12px 30px; background: var(--negro-suave); color: white; text-decoration: none; border-radius: 30px; }
+  </style>
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="index.html#itinerario">Itinerario</a></li>
+    <li style="color: var(--dorado);">Turismo</li>
+    <li><a href="index.html#rsvp">Asistencia</a></li>
+  </ul>
+</nav>
+
+<header class="header-turismo">
+  <h1>Guía de Turismo</h1>
+  <p>Descubre Cantabria con nosotros</p>
+</header>
+
+<section id="santander">
+  <h2>Qué hacer en Santander</h2>
+  <div class="grid-turismo">
+    <div class="card-turismo"><img src="IMG/faro.jpg"> <div class="info-turismo"><h4>Faro Cabo Mayor</h4><p>Vistas espectaculares del Cantábrico.</p></div></div>
+    <div class="card-turismo"><img src="IMG/sardinero.jpg"> <div class="info-turismo"><h4>Playa del Sardinero</h4><p>La playa más emblemática.</p></div></div>
+    <div class="card-turismo"><img src="IMG/magdalena.jpg"> <div class="info-turismo"><h4>Palacio Magdalena</h4><p>Antigua residencia real.</p></div></div>
+  </div>
+</section>
+
+<section style="background: rgba(232, 195, 154, 0.1); width: 100%; padding: 60px 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h2>Cantabria Infinita</h2>
+    <div class="grid-turismo">
+      <div class="card-turismo"><img src="IMG/santillana.jpg"> <div class="info-turismo"><h4>Santillana del Mar</h4><p>Villa medieval histórica.</p></div></div>
+      <div class="card-turismo"><img src="IMG/comillas.jpg"> <div class="info-turismo"><h4>Comillas</h4><p>Modernismo y Gaudí.</p></div></div>
+      <div class="card-turismo"><img src="IMG/potes.jpg"> <div class="info-turismo"><h4>Potes</h4><p>Picos de Europa.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div style="text-align: center; padding-bottom: 60px;">
+  <a href="index.html" class="btn-back">← Volver a la Invitación</a>
+</div>
+</body>
+</html>
