@@ -23,7 +23,7 @@
     /* NAVBAR */
     nav { position: fixed; top: 0; width: 100%; background: rgba(255,248,240,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; }
     nav ul { display: flex; justify-content: center; gap: 8px; list-style: none; padding: 12px; margin: 0; flex-wrap: wrap; }
-    nav li { cursor: pointer; font-size: 12px; padding: 5px 6px; transition: 0.3s; font-weight: bold; text-transform: uppercase; }
+    nav li { cursor: pointer; font-size: 11px; padding: 5px 6px; transition: 0.3s; font-weight: bold; text-transform: uppercase; }
     nav li:hover { color: var(--dorado); }
     .lang-switch { color: var(--dorado); cursor: pointer; border-left: 1px solid #ddd; padding-left: 12px !important; }
 
@@ -40,31 +40,28 @@
     header p { font-size: 1.4rem; margin-top: 10px; letter-spacing: 3px; font-weight: 300; }
 
     /* SECCIONES */
-    section { padding: 40px 20px; max-width: 800px; margin: auto; }
+    section { padding: 50px 20px; max-width: 800px; margin: auto; }
 
-    /* COUNTDOWN */
-    .countdown-section { text-align: center; }
-    .countdown { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-    .circle { 
-      width: 105px; height: 105px; border-radius: 50%;
-      background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; 
-      border: 2px solid var(--dorado); box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    /* BIENVENIDA */
+    .welcome-text { text-align: center; font-size: 1.2rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+
+    /* LOCALIZACIÓN */
+    .map-container { 
+      margin-top: 25px; border-radius: 15px; overflow: hidden; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 4px solid white;
+      height: 350px; width: 100%; max-width: 550px; margin-left: auto; margin-right: auto;
     }
-    .circle span { font-size: 2.2rem; font-weight: bold; line-height: 1; color: var(--dorado); }
-    .circle small { font-size: 0.75rem; text-transform: uppercase; margin-top: 5px; color: var(--gris); }
+    iframe { width: 100%; height: 100%; border: 0; }
 
-    /* TARJETAS (Itinerario y Regalo unificados) */
+    /* TARJETAS UNIFICADAS */
     .card-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 25px; }
     .card-item { 
       background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
       width: 100%; max-width: 550px; display: flex; flex-direction: column; align-items: center; text-align: center;
       gap: 10px; border-top: 5px solid var(--dorado);
     }
-    .it-img { 
-      width: 45px; height: 45px; object-fit: contain;
-      filter: invert(86%) sepia(13%) saturate(1048%) hue-rotate(331deg) brightness(97%) contrast(91%);
-    }
-    .hora { font-weight: 700; color: var(--dorado); display: block; font-size: 1.2rem; }
+    .it-img { width: 45px; height: 45px; filter: invert(86%) sepia(13%) saturate(1048%) hue-rotate(331deg) brightness(97%) contrast(91%); }
+    .hora { font-weight: 700; color: var(--dorado); font-size: 1.2rem; }
 
     /* BOTONES */
     .btn-main { 
@@ -77,17 +74,9 @@
     
     .btn-copy {
       background: var(--blanco); color: var(--dorado); border: 1px dashed var(--dorado);
-      padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;
-      margin-top: 10px; transition: 0.3s;
+      padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; margin-top: 10px;
     }
-    .btn-copy:hover { background: var(--dorado); color: white; }
-
-    /* IBAN */
-    .iban-box { 
-      font-family: monospace; font-size: 1.1rem; font-weight: bold; 
-      color: var(--negro-suave); background: #fdfdfd; padding: 10px; 
-      border-radius: 5px; border: 1px solid #eee; margin-top: 10px;
-    }
+    .iban-box { font-family: monospace; font-size: 1.1rem; font-weight: bold; color: var(--negro-suave); margin-top: 10px; }
 
     footer { text-align: center; padding: 30px; background: #fff; border-top: 1px solid #eee; font-size: 0.9rem; }
   </style>
@@ -98,6 +87,7 @@
   <ul>
     <li onclick="scrollToId('home')" data-i18n="nav_inicio">Inicio</li>
     <li onclick="scrollToId('itinerario')" data-i18n="nav_itinerario">Itinerario</li>
+    <li onclick="scrollToId('ubicacion')" data-i18n="nav_ubicacion">Ubicación</li>
     <li onclick="scrollToId('rsvp')" data-i18n="nav_asistencia">Asistencia</li>
     <li onclick="scrollToId('regalo')" data-i18n="nav_regalo">Regalo</li>
     <li onclick="irATurismo()" data-i18n="nav_info">Información Adicional</li>
@@ -120,25 +110,32 @@
   <div id="countdown" class="countdown"></div>
 </section>
 
+<section id="bienvenida">
+  <div class="welcome-text">
+    <p data-i18n="bienvenida_texto">“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables. ¡Estamos deseando celebrar nuestro gran día con todos vosotros!”</p>
+  </div>
+</section>
+
 <section id="itinerario">
   <h2 data-i18n="itinerario">Itinerario del Gran Día</h2>
   <div class="card-container">
-    <div class="card-item">
-      <img src="IMG/marriage.png" class="it-img">
-      <span class="hora">12:30</span><p data-i18n="ceremonia">Ceremonia civil</p>
+    <div class="card-item"><img src="IMG/marriage.png" class="it-img"><span class="hora">12:30</span><p data-i18n="ceremonia">Ceremonia civil</p></div>
+    <div class="card-item"><img src="IMG/cheers.png" class="it-img"><span class="hora">13:30</span><p data-i18n="cocktail">Cóctel de bienvenida</p></div>
+    <div class="card-item"><img src="IMG/banquet.png" class="it-img"><span class="hora">14:30</span><p data-i18n="banquete">Banquete nupcial</p></div>
+    <div class="card-item"><img src="IMG/disco-ball.png" class="it-img"><span class="hora">19:00</span><p data-i18n="baile">Baile y barra libre</p></div>
+  </div>
+</section>
+
+<section id="ubicacion">
+  <h2 data-i18n="ubicacion_titulo">Ubicación</h2>
+  <div style="text-align: center;">
+    <p><strong>Nuevo Molino de Puente Arce</strong><br>Puente Arce, Cantabria</p>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.048733224749!2d-3.9312158!3d43.4019234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4f9b87063f2b%3A0xe67c94158913b567!2sRestaurante%20El%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1700000000000"></iframe>
     </div>
-    <div class="card-item">
-      <img src="IMG/cheers.png" class="it-img">
-      <span class="hora">13:30</span><p data-i18n="cocktail">Cóctel de bienvenida</p>
-    </div>
-    <div class="card-item">
-      <img src="IMG/banquet.png" class="it-img">
-      <span class="hora">14:30</span><p data-i18n="banquete">Banquete nupcial</p>
-    </div>
-    <div class="card-item">
-      <img src="IMG/disco-ball.png" class="it-img">
-      <span class="hora">19:00</span><p data-i18n="baile">Baile y barra libre</p>
-    </div>
+    <a href="https://maps.app.goo.gl/yYvEizjGqUuCozBCA" target="_blank" class="btn-main" data-i18n="como_llegar">
+      <i class="fa-solid fa-location-dot"></i> Cómo llegar
+    </a>
   </div>
 </section>
 
@@ -157,7 +154,7 @@
   <div class="card-container">
     <div class="card-item">
       <i class="fa-solid fa-gift" style="font-size: 2rem; color: var(--dorado);"></i>
-      <p data-i18n="regalo_texto" style="font-size: 0.95rem;">Vuestra presencia es nuestro mejor regalo, pero si deseáis ayudarnos con nuestro viaje de novios:</p>
+      <p data-i18n="regalo_texto">Vuestra presencia es el mejor regalo, pero si queréis ayudarnos con nuestro viaje:</p>
       <div class="iban-box" id="ibanText">ES12 3456 7890 1234 5678 9012</div>
       <button class="btn-copy" onclick="copyIban()" id="copyBtn" data-i18n="copiar">Copiar IBAN</button>
       <p style="font-size: 0.8rem; margin-top: 5px; color: #888;">Titulares: Claudia & Alberto</p>
@@ -170,19 +167,23 @@
 <script>
   const translations = {
     es: { 
-      nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_regalo: "Regalo", nav_asistencia: "Asistencia", nav_info: "Información Adicional",
+      nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_regalo: "Regalo", nav_asistencia: "Asistencia", nav_info: "Información Adicional", nav_ubicacion: "Ubicación",
       date: "PUENTE ARCE", nos_casamos: "¡Nos casamos el 1 de agosto!", itinerario: "Itinerario", 
+      bienvenida_texto: "“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables. ¡Estamos deseando celebrar nuestro gran día con todos vosotros!”",
       ceremonia: "Ceremonia civil", cocktail: "Cóctel de bienvenida", banquete: "Banquete nupcial", baile: "Baile y barra libre", 
+      ubicacion_titulo: "Ubicación", como_llegar: "Cómo llegar",
       regalo_titulo: "Regalo", regalo_texto: "Vuestra presencia es el mejor regalo, pero si queréis ayudarnos con nuestro viaje:",
       confirmar: "¿Nos acompañas?", rsvp_p: "Confirma tu asistencia antes del 1 de junio de 2026.", 
       confirm_btn: "Confirmar Asistencia", copiar: "Copiar IBAN", copiado: "¡Copiado!",
       time: ["Días","Hrs","Min","Seg"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️"
     },
     it: { 
-      nav_inicio: "Inizio", nav_itinerario: "Programma", nav_regalo: "Regalo", nav_asistencia: "Partecipazione", nav_info: "Informazioni aggiuntive",
+      nav_inicio: "Inizio", nav_itinerario: "Programma", nav_regalo: "Regalo", nav_asistencia: "Partecipazione", nav_info: "Informazioni", nav_ubicacion: "Ubicazione",
       date: "PUENTE ARCE", nos_casamos: "Ci sposiamo il 1° agosto!", itinerario: "Programma", 
+      bienvenida_texto: "“Ci sono momenti nella vita che sono speciali di per sé, ma condividerli con le persone che amiamo di più li rende indimenticabili. Non vediamo l'ora di festeggiare il nostro grande giorno con tutti voi!”",
       ceremonia: "Cerimonia civile", cocktail: "Aperitivo di benvenuto", banquete: "Banchetto nuziale", baile: "Festa e open bar", 
-      regalo_titulo: "Regalo", regalo_texto: "La vostra presenza è il regalo más grande, ma se volete aiutarci con il nostro viaggio:",
+      ubicacion_titulo: "Ubicazione", como_llegar: "Come arrivare",
+      regalo_titulo: "Regalo", regalo_texto: "La vostra presenza è il regalo più grande, ma se volete aiutarci con il nostro viaggio:",
       confirmar: "Sarai dei nostri?", rsvp_p: "Per favore, conferma la tua presenza entro il 1° giugno 2026.", 
       confirm_btn: "Confermare Partecipazione", copiar: "Copia IBAN", copiado: "Copiato!",
       time: ["Giorni","Ore","Min","Sec"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️"
@@ -190,7 +191,6 @@
   };
 
   let currentLang = 'es';
-
   function setLang(lang) {
     currentLang = lang;
     Object.keys(translations[lang]).forEach(key => {
@@ -199,17 +199,14 @@
     updateCountdown();
   }
 
-  function irATurismo() {
-    window.location.href = currentLang === 'it' ? 'turismo-it.html' : 'turismo-es.html';
-  }
+  function irATurismo() { window.location.href = currentLang === 'it' ? 'turismo-it.html' : 'turismo-es.html'; }
 
   function copyIban() {
     const iban = document.getElementById("ibanText").innerText;
     navigator.clipboard.writeText(iban);
     const btn = document.getElementById("copyBtn");
-    const originalText = translations[currentLang].copiar;
     btn.innerText = translations[currentLang].copiado;
-    setTimeout(() => { btn.innerText = originalText; }, 2000);
+    setTimeout(() => { btn.innerText = translations[currentLang].copiar; }, 2000);
   }
 
   function scrollToId(id) { window.scrollTo({ top: document.getElementById(id).offsetTop - 70, behavior: "smooth" }); }
