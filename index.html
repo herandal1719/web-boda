@@ -23,7 +23,7 @@
     /* NAVBAR */
     nav { position: fixed; top: 0; width: 100%; background: rgba(255,248,240,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; }
     nav ul { display: flex; justify-content: center; gap: 10px; list-style: none; padding: 12px; margin: 0; flex-wrap: wrap; }
-    nav li { cursor: pointer; font-size: 14px; padding: 5px 10px; transition: 0.3s; font-weight: bold; text-transform: uppercase; }
+    nav li { cursor: pointer; font-size: 13px; padding: 5px 8px; transition: 0.3s; font-weight: bold; text-transform: uppercase; }
     nav li:hover { color: var(--dorado); }
     .lang-switch { color: var(--dorado); cursor: pointer; border-left: 1px solid #ddd; padding-left: 15px !important; }
 
@@ -34,15 +34,8 @@
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; color: white; overflow: hidden;
     }
-    .hero-images {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      display: flex; z-index: 1;
-    }
-    .hero-img {
-      width: 50%; height: 100%;
-      background-size: cover; background-position: center;
-      filter: brightness(0.7);
-    }
+    .hero-images { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; z-index: 1; }
+    .hero-img { width: 50%; height: 100%; background-size: cover; background-position: center; filter: brightness(0.7); }
     header h1, header p { position: relative; z-index: 2; color: white; margin: 0; }
     header h1 { font-size: clamp(2.8rem, 9vw, 5.5rem); text-shadow: 2px 2px 15px rgba(0,0,0,0.4); }
     header p { font-size: 1.4rem; margin-top: 10px; letter-spacing: 3px; font-weight: 300; }
@@ -96,7 +89,7 @@
   <ul>
     <li onclick="scrollToId('home')" data-i18n="nav_inicio">Inicio</li>
     <li onclick="scrollToId('itinerario')" data-i18n="nav_itinerario">Itinerario</li>
-    <li onclick="window.location.href='turismo.html'" data-i18n="nav_turismo">Turismo</li>
+    <li onclick="irATurismo()" data-i18n="nav_turismo">Turismo</li>
     <li onclick="scrollToId('rsvp')" data-i18n="nav_asistencia">Asistencia</li>
     <li class="lang-switch" onclick="setLang('es')">ES</li>
     <li class="lang-switch" onclick="setLang('it')">IT</li>
@@ -164,7 +157,7 @@
       nav_inicio: "Inizio", nav_itinerario: "Programma", nav_turismo: "Turismo", nav_asistencia: "Partecipazione",
       date: "PUENTE ARCE", nos_casamos: "Ci sposiamo il 1° agosto!", itinerario: "Programma del Grande Giorno", 
       ceremonia: "Cerimonia civile", cocktail: "Aperitivo di benvenuto", banquete: "Banchetto nuziale", baile: "Festa e open bar", 
-      confirmar: "Sarai dei nostri?", rsvp_p: "Per favore, conferma la tua presenza entro el 1° giugno 2026.", 
+      confirmar: "Sarai dei nostri?", rsvp_p: "Per favore, confirma la tua presenza entro el 1° giugno 2026.", 
       confirm_btn: "Confermare Partecipazione", time: ["Giorni","Ore","Min","Sec"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️"
     }
   };
@@ -177,6 +170,15 @@
       document.querySelectorAll(`[data-i18n="${key}"]`).forEach(el => el.textContent = translations[lang][key]);
     });
     updateCountdown();
+  }
+
+  function irATurismo() {
+    // Redirige según el idioma seleccionado
+    if (currentLang === 'it') {
+      window.location.href = 'turismo-it.html';
+    } else {
+      window.location.href = 'turismo-es.html';
+    }
   }
 
   function scrollToId(id) { window.scrollTo({ top: document.getElementById(id).offsetTop - 70, behavior: "smooth" }); }
