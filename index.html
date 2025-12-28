@@ -22,15 +22,14 @@
 
     /* NAVBAR */
     nav { position: fixed; top: 0; width: 100%; background: rgba(255,248,240,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; }
-    nav ul { display: flex; justify-content: center; gap: 10px; list-style: none; padding: 12px; margin: 0; flex-wrap: wrap; }
-    nav li { cursor: pointer; font-size: 13px; padding: 5px 8px; transition: 0.3s; font-weight: bold; text-transform: uppercase; }
+    nav ul { display: flex; justify-content: center; gap: 8px; list-style: none; padding: 12px; margin: 0; flex-wrap: wrap; }
+    nav li { cursor: pointer; font-size: 12px; padding: 5px 6px; transition: 0.3s; font-weight: bold; text-transform: uppercase; }
     nav li:hover { color: var(--dorado); }
-    .lang-switch { color: var(--dorado); cursor: pointer; border-left: 1px solid #ddd; padding-left: 15px !important; }
+    .lang-switch { color: var(--dorado); cursor: pointer; border-left: 1px solid #ddd; padding-left: 12px !important; }
 
     /* HERO */
     header { 
-      height: 70vh; min-height: 500px;
-      position: relative;
+      height: 70vh; min-height: 500px; position: relative;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; color: white; overflow: hidden;
     }
@@ -51,20 +50,33 @@
     .circle span { font-size: 2.2rem; font-weight: bold; line-height: 1; color: var(--dorado); }
     .circle small { font-size: 0.75rem; text-transform: uppercase; margin-top: 5px; color: var(--gris); }
 
-    /* ITINERARIO */
+    /* SECCIONES COMUNES */
     section { padding: 40px 20px; max-width: 800px; margin: auto; }
+
+    /* ITINERARIO */
     .itinerario-grid { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 25px; }
     .itinerario-item { 
       background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
       width: 100%; max-width: 550px; display: flex; flex-direction: column; align-items: center; text-align: center;
       gap: 10px; border-top: 5px solid var(--dorado);
     }
-    .it-icon { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
     .it-img { 
       width: 45px; height: 45px; object-fit: contain;
       filter: invert(86%) sepia(13%) saturate(1048%) hue-rotate(331deg) brightness(97%) contrast(91%);
     }
     .it-info .hora { font-weight: 700; color: var(--dorado); display: block; font-size: 1.2rem; }
+
+    /* SECCIÓN REGALO */
+    .gift-box {
+      background: white; padding: 40px 25px; border-radius: 20px; text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid var(--rosa);
+    }
+    .gift-icon { font-size: 2.5rem; color: var(--dorado); margin-bottom: 15px; }
+    .iban { 
+      font-size: 1.2rem; font-weight: bold; color: var(--negro-suave); 
+      background: var(--blanco); padding: 15px; border-radius: 10px; 
+      display: inline-block; margin-top: 15px; letter-spacing: 1px;
+    }
 
     /* RSVP */
     .rsvp-box { 
@@ -89,8 +101,9 @@
   <ul>
     <li onclick="scrollToId('home')" data-i18n="nav_inicio">Inicio</li>
     <li onclick="scrollToId('itinerario')" data-i18n="nav_itinerario">Itinerario</li>
-    <li onclick="irATurismo()" data-i18n="nav_turismo">Turismo</li>
+    <li onclick="scrollToId('regalo')" data-i18n="nav_regalo">Regalo</li>
     <li onclick="scrollToId('rsvp')" data-i18n="nav_asistencia">Asistencia</li>
+    <li onclick="irATurismo()" data-i18n="nav_info">Información Adicional</li>
     <li class="lang-switch" onclick="setLang('es')">ES</li>
     <li class="lang-switch" onclick="setLang('it')">IT</li>
   </ul>
@@ -114,21 +127,31 @@
   <h2 data-i18n="itinerario">Itinerario del Gran Día</h2>
   <div class="itinerario-grid">
     <div class="itinerario-item">
-      <div class="it-icon"><img src="IMG/marriage.png" class="it-img" alt="Ceremonia"></div>
+      <div class="it-icon"><img src="IMG/marriage.png" class="it-img"></div>
       <div class="it-info"><span class="hora">12:30</span><p data-i18n="ceremonia">Ceremonia civil</p></div>
     </div>
     <div class="itinerario-item">
-      <div class="it-icon"><img src="IMG/cheers.png" class="it-img" alt="Cocktail"></div>
+      <div class="it-icon"><img src="IMG/cheers.png" class="it-img"></div>
       <div class="it-info"><span class="hora">13:30</span><p data-i18n="cocktail">Cóctel de bienvenida</p></div>
     </div>
     <div class="itinerario-item">
-      <div class="it-icon"><img src="IMG/banquet.png" class="it-img" alt="Banquete"></div>
+      <div class="it-icon"><img src="IMG/banquet.png" class="it-img"></div>
       <div class="it-info"><span class="hora">14:30</span><p data-i18n="banquete">Banquete nupcial</p></div>
     </div>
     <div class="itinerario-item">
-      <div class="it-icon"><img src="IMG/disco-ball.png" class="it-img" alt="Fiesta"></div>
+      <div class="it-icon"><img src="IMG/disco-ball.png" class="it-img"></div>
       <div class="it-info"><span class="hora">19:00</span><p data-i18n="baile">Baile y barra libre</p></div>
     </div>
+  </div>
+</section>
+
+<section id="regalo">
+  <div class="gift-box">
+    <div class="gift-icon"><i class="fa-solid fa-gift"></i></div>
+    <h2 data-i18n="regalo_titulo">Regalo</h2>
+    <p data-i18n="regalo_texto">Vuestra presencia es nuestro mejor regalo, pero si deseáis ayudarnos con nuestro viaje de novios:</p>
+    <div class="iban">ES12 3456 7890 1234 5678 9012</div>
+    <p style="font-size: 0.9rem; margin-top: 10px;">Titulares: Claudia & Alberto</p>
   </div>
 </section>
 
@@ -147,17 +170,19 @@
 <script>
   const translations = {
     es: { 
-      nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_turismo: "Turismo", nav_asistencia: "Asistencia",
+      nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_regalo: "Regalo", nav_asistencia: "Asistencia", nav_info: "Información Adicional",
       date: "PUENTE ARCE", nos_casamos: "¡Nos casamos el 1 de agosto!", itinerario: "Itinerario del Gran Día", 
       ceremonia: "Ceremonia civil", cocktail: "Cóctel de bienvenida", banquete: "Banquete nupcial", baile: "Baile y barra libre", 
+      regalo_titulo: "Regalo", regalo_texto: "Vuestra presencia es nuestro mejor regalo, pero si deseáis ayudarnos con nuestro viaje de novios:",
       confirmar: "¿Nos acompañas?", rsvp_p: "Confirma tu asistencia antes del 1 de junio de 2026.", 
       confirm_btn: "Confirmar Asistencia", time: ["Días","Hrs","Min","Seg"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️"
     },
     it: { 
-      nav_inicio: "Inizio", nav_itinerario: "Programma", nav_turismo: "Turismo", nav_asistencia: "Partecipazione",
+      nav_inicio: "Inizio", nav_itinerario: "Programma", nav_regalo: "Regalo", nav_asistencia: "Partecipazione", nav_info: "Informazioni aggiuntive",
       date: "PUENTE ARCE", nos_casamos: "Ci sposiamo il 1° agosto!", itinerario: "Programma del Grande Giorno", 
       ceremonia: "Cerimonia civile", cocktail: "Aperitivo di benvenuto", banquete: "Banchetto nuziale", baile: "Festa e open bar", 
-      confirmar: "Sarai dei nostri?", rsvp_p: "Per favore, confirma la tua presenza entro el 1° giugno 2026.", 
+      regalo_titulo: "Regalo", regalo_texto: "La vostra presenza è il nostro regalo più grande, ma se desiderate aiutarci con il nostro viaggio di nozze:",
+      confirmar: "Sarai dei nostri?", rsvp_p: "Per favore, conferma la tua presenza entro il 1° giugno 2026.", 
       confirm_btn: "Confermare Partecipazione", time: ["Giorni","Ore","Min","Sec"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️"
     }
   };
@@ -173,12 +198,7 @@
   }
 
   function irATurismo() {
-    // Redirige según el idioma seleccionado
-    if (currentLang === 'it') {
-      window.location.href = 'turismo-it.html';
-    } else {
-      window.location.href = 'turismo-es.html';
-    }
+    window.location.href = currentLang === 'it' ? 'turismo-it.html' : 'turismo-es.html';
   }
 
   function scrollToId(id) { window.scrollTo({ top: document.getElementById(id).offsetTop - 70, behavior: "smooth" }); }
