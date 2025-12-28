@@ -27,31 +27,29 @@
     nav li:hover { color: var(--dorado); }
     .lang-switch { color: var(--dorado); cursor: pointer; border-left: 1px solid #ddd; padding-left: 10px !important; }
 
-    /* HERO ACTUALIZADO (Nombres abajo) */
+    /* HERO (Nombres en el pie) */
     header { 
       height: 75vh; min-height: 450px; position: relative;
-      display: flex; flex-direction: column; align-items: center; justify-content: flex-end; /* Alinea al final */
+      display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
       text-align: center; color: white; overflow: hidden;
-      padding-bottom: 40px; /* Espacio desde el borde inferior */
     }
     .hero-images { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; z-index: 1; }
-    .hero-img { width: 50%; height: 100%; background-size: cover; background-position: center; filter: brightness(0.8); }
+    .hero-img { width: 50%; height: 100%; background-size: cover; background-position: center; filter: brightness(0.85); }
     
-    /* Degradado para legibilidad */
     header::after {
-      content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%;
-      background: linear-gradient(transparent, rgba(0,0,0,0.5)); z-index: 2;
+      content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 35%;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); z-index: 2;
     }
 
-    .hero-content { position: relative; z-index: 3; width: 100%; }
-    header h1 { color: white; margin: 0; font-size: clamp(2.2rem, 7vw, 4rem); text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
-    header p { color: white; font-size: 1.2rem; margin-top: 5px; letter-spacing: 4px; font-weight: 400; font-family: 'Playfair Display', serif; }
+    .hero-content { position: relative; z-index: 3; width: 100%; padding-bottom: 35px; }
+    header h1 { color: white; margin: 0; font-size: clamp(2.2rem, 7vw, 4rem); text-shadow: 2px 2px 10px rgba(0,0,0,0.4); }
+    header p { color: white; font-size: 1.2rem; margin-top: 5px; letter-spacing: 4px; font-weight: 400; font-family: 'Playfair Display', serif; text-shadow: 1px 1px 5px rgba(0,0,0,0.4); }
 
     /* SECCIONES COMPACTAS */
-    section { padding: 30px 20px; max-width: 800px; margin: auto; }
+    section { padding: 35px 20px; max-width: 800px; margin: auto; }
 
     /* COUNTDOWN */
-    .countdown-section { padding-top: 40px; text-align: center; }
+    .countdown-section { padding-top: 45px; text-align: center; }
     .countdown { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 15px; }
     .circle { 
       width: 80px; height: 80px; border-radius: 50%;
@@ -61,7 +59,10 @@
     .circle span { font-size: 1.6rem; font-weight: bold; line-height: 1; color: var(--dorado); }
     .circle small { font-size: 0.6rem; text-transform: uppercase; color: var(--gris); }
 
-    /* TARJETAS */
+    /* BIENVENIDA */
+    .welcome-text { text-align: center; font-size: 1.15rem; font-style: italic; max-width: 620px; margin: 0 auto; color: var(--gris); line-height: 1.6; }
+
+    /* TARJETAS ITINERARIO */
     .card-container { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 20px; }
     .card-item { 
       background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
@@ -71,21 +72,21 @@
     .it-img { width: 40px; height: 40px; filter: invert(86%) sepia(13%) saturate(1048%) hue-rotate(331deg) brightness(97%) contrast(91%); }
     .hora { font-weight: 700; color: var(--dorado); font-size: 1.1rem; }
 
-    /* UBICACIÓN CENTRADA */
+    /* UBICACIÓN */
     .map-container { 
-      margin: 15px auto; border-radius: 12px; overflow: hidden; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 3px solid white;
+      margin: 20px auto; border-radius: 15px; overflow: hidden; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 4px solid white;
       height: 300px; width: 100%; max-width: 500px;
     }
     iframe { width: 100%; height: 100%; border: 0; }
 
     /* BOTONES */
     .btn-main { 
-      background: var(--dorado); color: white; padding: 12px 30px; 
+      background: var(--dorado); color: white; padding: 14px 32px; 
       border-radius: 50px; text-decoration: none; font-weight: bold; 
       display: inline-block; margin-top: 15px; transition: 0.3s; font-size: 0.95rem; border: none; cursor: pointer;
     }
-    .btn-main:hover { transform: translateY(-2px); background: #dcb386; }
+    .btn-main:hover { transform: translateY(-2px); background: #dcb386; box-shadow: 0 5px 15px rgba(232, 195, 154, 0.4); }
     
     .btn-copy {
       background: var(--blanco); color: var(--dorado); border: 1px dashed var(--dorado);
@@ -93,7 +94,7 @@
     }
     .iban-box { font-family: monospace; font-size: 1rem; font-weight: bold; color: var(--negro-suave); margin-top: 5px; border: 1px solid #eee; padding: 8px; border-radius: 5px; background: #fff; }
 
-    footer { text-align: center; padding: 20px; background: #fff; border-top: 1px solid #eee; font-size: 0.85rem; }
+    footer { text-align: center; padding: 25px; background: #fff; border-top: 1px solid #eee; font-size: 0.85rem; }
   </style>
 </head>
 <body>
@@ -128,7 +129,7 @@
 </section>
 
 <section id="bienvenida">
-  <div class="welcome-text" style="text-align: center; font-style: italic;">
+  <div class="welcome-text">
     <p data-i18n="bienvenida_texto">“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables. ¡Estamos deseando celebrar nuestro gran día con todos vosotros!”</p>
   </div>
 </section>
@@ -146,11 +147,12 @@
 <section id="ubicacion">
   <h2 data-i18n="ubicacion_titulo">Ubicación</h2>
   <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
-    <p style="margin-bottom: 10px;"><strong>Restaurante El Nuevo Molino</strong><br>Puente Arce, Cantabria</p>
+    <p style="margin-bottom: 5px;"><strong>Restaurante El Nuevo Molino</strong></p>
+    <p style="font-size: 0.95rem; margin-top: 0;">Bo. Monseñor, 18, 39478 Arce, Cantabria</p>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2898.397074744383!2d-3.9431478234320984!3d43.4105349673992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e38880b734f21%3A0xca49436a7fca3273!2sEl%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1710000000000!5m2!1ses!2ses"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2898.3970724813583!2d-3.931109023412537!3d43.410526371114945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4ec0880b734fa1%3A0x4a8ec37a7f323273!2sRestaurante%20El%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1715850000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <a href="https://maps.app.goo.gl/ca49436a7fca3273" target="_blank" class="btn-main" data-i18n="como_llegar">
+    <a href="https://maps.app.goo.gl/ChIJoU9zC4g4SQ0RczLHf2rDjks" target="_blank" class="btn-main" data-i18n="como_llegar">
       <i class="fa-solid fa-location-dot"></i> Cómo llegar
     </a>
   </div>
@@ -159,7 +161,7 @@
 <section id="rsvp">
   <div style="text-align: center;">
     <h2 data-i18n="confirmar">¿Nos acompañas?</h2>
-    <p data-i18n="rsvp_p" style="margin-bottom: 0;">Confirma tu asistencia antes del 1 de junio de 2026.</p>
+    <p data-i18n="rsvp_p">Por favor, confirma tu asistencia antes del 1 de junio de 2026.</p>
     <a href="https://forms.gle/2uurApQkp68dGx13A" target="_blank" class="btn-main" data-i18n="confirm_btn">
       <i class="fa-solid fa-calendar-check"></i> Confirmar Asistencia
     </a>
