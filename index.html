@@ -39,8 +39,11 @@
     header h1 { font-size: clamp(2.8rem, 9vw, 5.5rem); text-shadow: 2px 2px 15px rgba(0,0,0,0.4); }
     header p { font-size: 1.4rem; margin-top: 10px; letter-spacing: 3px; font-weight: 300; }
 
+    /* SECCIONES */
+    section { padding: 40px 20px; max-width: 800px; margin: auto; }
+
     /* COUNTDOWN */
-    .countdown-section { padding: 60px 20px 40px 20px; text-align: center; }
+    .countdown-section { text-align: center; }
     .countdown { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
     .circle { 
       width: 105px; height: 105px; border-radius: 50%;
@@ -50,12 +53,9 @@
     .circle span { font-size: 2.2rem; font-weight: bold; line-height: 1; color: var(--dorado); }
     .circle small { font-size: 0.75rem; text-transform: uppercase; margin-top: 5px; color: var(--gris); }
 
-    /* SECCIONES COMUNES */
-    section { padding: 40px 20px; max-width: 800px; margin: auto; }
-
-    /* ITINERARIO */
-    .itinerario-grid { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 25px; }
-    .itinerario-item { 
+    /* TARJETAS (Itinerario y Regalo unificados) */
+    .card-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 25px; }
+    .card-item { 
       background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
       width: 100%; max-width: 550px; display: flex; flex-direction: column; align-items: center; text-align: center;
       gap: 10px; border-top: 5px solid var(--dorado);
@@ -64,33 +64,30 @@
       width: 45px; height: 45px; object-fit: contain;
       filter: invert(86%) sepia(13%) saturate(1048%) hue-rotate(331deg) brightness(97%) contrast(91%);
     }
-    .it-info .hora { font-weight: 700; color: var(--dorado); display: block; font-size: 1.2rem; }
+    .hora { font-weight: 700; color: var(--dorado); display: block; font-size: 1.2rem; }
 
-    /* SECCIÓN REGALO */
-    .gift-box {
-      background: white; padding: 40px 25px; border-radius: 20px; text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid var(--rosa);
-    }
-    .gift-icon { font-size: 2.5rem; color: var(--dorado); margin-bottom: 15px; }
-    .iban { 
-      font-size: 1.2rem; font-weight: bold; color: var(--negro-suave); 
-      background: var(--blanco); padding: 15px; border-radius: 10px; 
-      display: inline-block; margin-top: 15px; letter-spacing: 1px;
-    }
-
-    /* RSVP */
-    .rsvp-box { 
-      background: white; padding: 40px 20px; border-radius: 20px; 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; 
-      max-width: 600px; margin: 30px auto; border: 1px solid var(--rosa);
-    }
-    .btn-google { 
-      background: var(--dorado); color: white; padding: 18px 40px; 
+    /* BOTONES */
+    .btn-main { 
+      background: var(--dorado); color: white; padding: 15px 35px; 
       border-radius: 50px; text-decoration: none; font-weight: bold; 
-      display: inline-block; margin-top: 25px; transition: 0.3s;
-      font-size: 1.1rem; box-shadow: 0 4px 15px rgba(232, 195, 154, 0.4); border: none; cursor: pointer;
+      display: inline-block; margin-top: 20px; transition: 0.3s;
+      font-size: 1rem; border: none; cursor: pointer;
     }
-    .btn-google:hover { transform: translateY(-3px); background: #dcb386; }
+    .btn-main:hover { transform: translateY(-2px); background: #dcb386; }
+    
+    .btn-copy {
+      background: var(--blanco); color: var(--dorado); border: 1px dashed var(--dorado);
+      padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;
+      margin-top: 10px; transition: 0.3s;
+    }
+    .btn-copy:hover { background: var(--dorado); color: white; }
+
+    /* IBAN */
+    .iban-box { 
+      font-family: monospace; font-size: 1.1rem; font-weight: bold; 
+      color: var(--negro-suave); background: #fdfdfd; padding: 10px; 
+      border-radius: 5px; border: 1px solid #eee; margin-top: 10px;
+    }
 
     footer { text-align: center; padding: 30px; background: #fff; border-top: 1px solid #eee; font-size: 0.9rem; }
   </style>
@@ -101,8 +98,8 @@
   <ul>
     <li onclick="scrollToId('home')" data-i18n="nav_inicio">Inicio</li>
     <li onclick="scrollToId('itinerario')" data-i18n="nav_itinerario">Itinerario</li>
-    <li onclick="scrollToId('regalo')" data-i18n="nav_regalo">Regalo</li>
     <li onclick="scrollToId('rsvp')" data-i18n="nav_asistencia">Asistencia</li>
+    <li onclick="scrollToId('regalo')" data-i18n="nav_regalo">Regalo</li>
     <li onclick="irATurismo()" data-i18n="nav_info">Información Adicional</li>
     <li class="lang-switch" onclick="setLang('es')">ES</li>
     <li class="lang-switch" onclick="setLang('it')">IT</li>
@@ -125,43 +122,46 @@
 
 <section id="itinerario">
   <h2 data-i18n="itinerario">Itinerario del Gran Día</h2>
-  <div class="itinerario-grid">
-    <div class="itinerario-item">
-      <div class="it-icon"><img src="IMG/marriage.png" class="it-img"></div>
-      <div class="it-info"><span class="hora">12:30</span><p data-i18n="ceremonia">Ceremonia civil</p></div>
+  <div class="card-container">
+    <div class="card-item">
+      <img src="IMG/marriage.png" class="it-img">
+      <span class="hora">12:30</span><p data-i18n="ceremonia">Ceremonia civil</p>
     </div>
-    <div class="itinerario-item">
-      <div class="it-icon"><img src="IMG/cheers.png" class="it-img"></div>
-      <div class="it-info"><span class="hora">13:30</span><p data-i18n="cocktail">Cóctel de bienvenida</p></div>
+    <div class="card-item">
+      <img src="IMG/cheers.png" class="it-img">
+      <span class="hora">13:30</span><p data-i18n="cocktail">Cóctel de bienvenida</p>
     </div>
-    <div class="itinerario-item">
-      <div class="it-icon"><img src="IMG/banquet.png" class="it-img"></div>
-      <div class="it-info"><span class="hora">14:30</span><p data-i18n="banquete">Banquete nupcial</p></div>
+    <div class="card-item">
+      <img src="IMG/banquet.png" class="it-img">
+      <span class="hora">14:30</span><p data-i18n="banquete">Banquete nupcial</p>
     </div>
-    <div class="itinerario-item">
-      <div class="it-icon"><img src="IMG/disco-ball.png" class="it-img"></div>
-      <div class="it-info"><span class="hora">19:00</span><p data-i18n="baile">Baile y barra libre</p></div>
+    <div class="card-item">
+      <img src="IMG/disco-ball.png" class="it-img">
+      <span class="hora">19:00</span><p data-i18n="baile">Baile y barra libre</p>
     </div>
-  </div>
-</section>
-
-<section id="regalo">
-  <div class="gift-box">
-    <div class="gift-icon"><i class="fa-solid fa-gift"></i></div>
-    <h2 data-i18n="regalo_titulo">Regalo</h2>
-    <p data-i18n="regalo_texto">Vuestra presencia es nuestro mejor regalo, pero si deseáis ayudarnos con nuestro viaje de novios:</p>
-    <div class="iban">ES12 3456 7890 1234 5678 9012</div>
-    <p style="font-size: 0.9rem; margin-top: 10px;">Titulares: Claudia & Alberto</p>
   </div>
 </section>
 
 <section id="rsvp">
-  <div class="rsvp-box">
+  <div style="text-align: center;">
     <h2 data-i18n="confirmar">¿Nos acompañas?</h2>
     <p data-i18n="rsvp_p">Por favor, confirma tu asistencia antes del 1 de junio de 2026.</p>
-    <a href="https://forms.gle/2uurApQkp68dGx13A" target="_blank" class="btn-google" data-i18n="confirm_btn">
+    <a href="https://forms.gle/2uurApQkp68dGx13A" target="_blank" class="btn-main" data-i18n="confirm_btn">
       <i class="fa-solid fa-calendar-check"></i> Confirmar Asistencia
     </a>
+  </div>
+</section>
+
+<section id="regalo">
+  <h2 data-i18n="regalo_titulo">Regalo</h2>
+  <div class="card-container">
+    <div class="card-item">
+      <i class="fa-solid fa-gift" style="font-size: 2rem; color: var(--dorado);"></i>
+      <p data-i18n="regalo_texto" style="font-size: 0.95rem;">Vuestra presencia es nuestro mejor regalo, pero si deseáis ayudarnos con nuestro viaje de novios:</p>
+      <div class="iban-box" id="ibanText">ES12 3456 7890 1234 5678 9012</div>
+      <button class="btn-copy" onclick="copyIban()" id="copyBtn" data-i18n="copiar">Copiar IBAN</button>
+      <p style="font-size: 0.8rem; margin-top: 5px; color: #888;">Titulares: Claudia & Alberto</p>
+    </div>
   </div>
 </section>
 
@@ -171,19 +171,21 @@
   const translations = {
     es: { 
       nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_regalo: "Regalo", nav_asistencia: "Asistencia", nav_info: "Información Adicional",
-      date: "PUENTE ARCE", nos_casamos: "¡Nos casamos el 1 de agosto!", itinerario: "Itinerario del Gran Día", 
+      date: "PUENTE ARCE", nos_casamos: "¡Nos casamos el 1 de agosto!", itinerario: "Itinerario", 
       ceremonia: "Ceremonia civil", cocktail: "Cóctel de bienvenida", banquete: "Banquete nupcial", baile: "Baile y barra libre", 
-      regalo_titulo: "Regalo", regalo_texto: "Vuestra presencia es nuestro mejor regalo, pero si deseáis ayudarnos con nuestro viaje de novios:",
+      regalo_titulo: "Regalo", regalo_texto: "Vuestra presencia es el mejor regalo, pero si queréis ayudarnos con nuestro viaje:",
       confirmar: "¿Nos acompañas?", rsvp_p: "Confirma tu asistencia antes del 1 de junio de 2026.", 
-      confirm_btn: "Confirmar Asistencia", time: ["Días","Hrs","Min","Seg"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️"
+      confirm_btn: "Confirmar Asistencia", copiar: "Copiar IBAN", copiado: "¡Copiado!",
+      time: ["Días","Hrs","Min","Seg"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️"
     },
     it: { 
       nav_inicio: "Inizio", nav_itinerario: "Programma", nav_regalo: "Regalo", nav_asistencia: "Partecipazione", nav_info: "Informazioni aggiuntive",
-      date: "PUENTE ARCE", nos_casamos: "Ci sposiamo il 1° agosto!", itinerario: "Programma del Grande Giorno", 
+      date: "PUENTE ARCE", nos_casamos: "Ci sposiamo il 1° agosto!", itinerario: "Programma", 
       ceremonia: "Cerimonia civile", cocktail: "Aperitivo di benvenuto", banquete: "Banchetto nuziale", baile: "Festa e open bar", 
-      regalo_titulo: "Regalo", regalo_texto: "La vostra presenza è il nostro regalo più grande, ma se desiderate aiutarci con il nostro viaggio di nozze:",
+      regalo_titulo: "Regalo", regalo_texto: "La vostra presenza è il regalo más grande, ma se volete aiutarci con il nostro viaggio:",
       confirmar: "Sarai dei nostri?", rsvp_p: "Per favore, conferma la tua presenza entro il 1° giugno 2026.", 
-      confirm_btn: "Confermare Partecipazione", time: ["Giorni","Ore","Min","Sec"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️"
+      confirm_btn: "Confermare Partecipazione", copiar: "Copia IBAN", copiado: "Copiato!",
+      time: ["Giorni","Ore","Min","Sec"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️"
     }
   };
 
@@ -199,6 +201,15 @@
 
   function irATurismo() {
     window.location.href = currentLang === 'it' ? 'turismo-it.html' : 'turismo-es.html';
+  }
+
+  function copyIban() {
+    const iban = document.getElementById("ibanText").innerText;
+    navigator.clipboard.writeText(iban);
+    const btn = document.getElementById("copyBtn");
+    const originalText = translations[currentLang].copiar;
+    btn.innerText = translations[currentLang].copiado;
+    setTimeout(() => { btn.innerText = originalText; }, 2000);
   }
 
   function scrollToId(id) { window.scrollTo({ top: document.getElementById(id).offsetTop - 70, behavior: "smooth" }); }
