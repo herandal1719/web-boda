@@ -17,8 +17,8 @@
     }
 
     * { box-sizing: border-box; scroll-behavior: smooth; }
-    body { margin: 0; font-family: 'Lato', sans-serif; background: var(--blanco); color: var(--gris); line-height: 1.5; overflow-x: hidden; }
-    h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--negro-suave); text-align: center; margin-top: 0; margin-bottom: 15px; }
+    body { margin: 0; font-family: 'Lato', sans-serif; background: var(--blanco); color: var(--gris); line-height: 1.4; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--negro-suave); text-align: center; margin-top: 0; margin-bottom: 10px; }
 
     /* NAVBAR */
     nav { position: fixed; top: 0; width: 100%; background: rgba(255,248,240,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; }
@@ -37,11 +37,10 @@
     .hero-img { 
         width: 50%; height: 100%; 
         background-size: cover; 
-        background-position: center 20%; /* Ajuste para no cortar cabezas */
+        background-position: center 20%; 
         filter: brightness(0.85); 
     }
     
-    /* Responsive para fotos en móvil */
     @media (max-width: 600px) {
         .hero-images { flex-direction: column; }
         .hero-img { width: 100%; height: 50%; }
@@ -53,67 +52,66 @@
       background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); z-index: 2;
     }
 
-    .hero-content { position: relative; z-index: 3; width: 100%; padding-bottom: 40px; }
+    .hero-content { position: relative; z-index: 3; width: 100%; padding-bottom: 30px; }
     header h1 { color: white; margin: 0; font-size: clamp(2rem, 8vw, 4rem); text-shadow: 2px 2px 10px rgba(0,0,0,0.4); }
-    header p { color: white; font-size: 1.1rem; margin-top: 8px; letter-spacing: 5px; font-family: 'Playfair Display', serif; }
+    header p { color: white; font-size: 1.1rem; margin-top: 5px; letter-spacing: 5px; font-family: 'Playfair Display', serif; }
 
-    /* COUNTDOWN CON TRANSICIÓN */
+    /* SECCIONES REDUCIDAS */
+    section { padding: 25px 20px; max-width: 800px; margin: auto; }
+
+    /* COUNTDOWN */
     @keyframes fadeInScale {
-        from { opacity: 0; transform: scale(0.9); }
+        from { opacity: 0; transform: scale(0.95); }
         to { opacity: 1; transform: scale(1); }
     }
-    .countdown-section { padding: 50px 20px; text-align: center; }
+    .countdown-section { padding-top: 35px; text-align: center; }
     .countdown { 
-        display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; 
-        margin-top: 20px; animation: fadeInScale 1.2s ease-out; 
+        display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; 
+        margin-top: 15px; animation: fadeInScale 1s ease-out; 
     }
     .circle { 
-      width: 85px; height: 85px; border-radius: 50%;
+      width: 75px; height: 75px; border-radius: 50%;
       background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; 
-      border: 2px solid var(--dorado); box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      transition: transform 0.3s;
+      border: 2px solid var(--dorado); box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
-    .circle:hover { transform: translateY(-5px); }
-    .circle span { font-size: 1.8rem; font-weight: bold; line-height: 1; color: var(--dorado); }
-    .circle small { font-size: 0.65rem; text-transform: uppercase; color: var(--gris); margin-top: 2px; }
+    .circle span { font-size: 1.6rem; font-weight: bold; line-height: 1; color: var(--dorado); }
+    .circle small { font-size: 0.6rem; text-transform: uppercase; color: var(--gris); }
 
-    /* SECCIONES */
-    section { padding: 40px 20px; max-width: 800px; margin: auto; }
-    .welcome-text { text-align: center; font-size: 1.15rem; font-style: italic; max-width: 620px; margin: 0 auto; color: var(--gris); line-height: 1.6; }
+    .welcome-text { text-align: center; font-size: 1.1rem; font-style: italic; max-width: 600px; margin: 0 auto; color: var(--gris); line-height: 1.5; }
 
     /* ITINERARIO */
-    .card-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 25px; }
+    .card-container { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 15px; }
     .card-item { 
-      background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-      width: 100%; max-width: 500px; display: flex; flex-direction: column; align-items: center; text-align: center;
-      gap: 8px; border-top: 4px solid var(--dorado);
+      background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+      width: 100%; max-width: 450px; display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: 5px; border-top: 3px solid var(--dorado);
     }
-    .it-img { width: 40px; height: 40px; filter: invert(86%) sepia(13%) saturate(1048%) hue-rotate(331deg) brightness(97%) contrast(91%); }
-    .hora { font-weight: 700; color: var(--dorado); font-size: 1.1rem; }
+    .it-img { width: 35px; height: 35px; filter: invert(86%) sepia(13%) saturate(1048%) hue-rotate(331deg) brightness(97%) contrast(91%); }
+    .hora { font-weight: 700; color: var(--dorado); font-size: 1rem; }
 
-    /* MAPA */
+    /* MAPA CENTRADO */
     .map-container { 
-      margin: 20px auto; border-radius: 15px; overflow: hidden; 
+      margin: 15px auto; border-radius: 15px; overflow: hidden; 
       box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 4px solid white;
-      height: 300px; width: 100%; max-width: 500px;
+      height: 280px; width: 100%; max-width: 500px;
     }
     iframe { width: 100%; height: 100%; border: 0; }
 
     /* BOTONES */
     .btn-main { 
-      background: var(--dorado); color: white; padding: 14px 32px; 
+      background: var(--dorado); color: white; padding: 12px 30px; 
       border-radius: 50px; text-decoration: none; font-weight: bold; 
-      display: inline-block; margin-top: 15px; transition: 0.3s; font-size: 0.95rem; border: none; cursor: pointer;
+      display: inline-block; margin-top: 10px; transition: 0.3s; font-size: 0.9rem; border: none; cursor: pointer;
     }
-    .btn-main:hover { transform: translateY(-2px); background: #dcb386; box-shadow: 0 5px 15px rgba(232, 195, 154, 0.4); }
+    .btn-main:hover { transform: translateY(-2px); background: #dcb386; }
     
     .btn-copy {
       background: var(--blanco); color: var(--dorado); border: 1px dashed var(--dorado);
-      padding: 6px 12px; border-radius: 5px; cursor: pointer; font-size: 0.75rem; margin-top: 8px;
+      padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.7rem; margin-top: 5px;
     }
-    .iban-box { font-family: monospace; font-size: 1rem; font-weight: bold; color: var(--negro-suave); margin-top: 5px; border: 1px solid #eee; padding: 8px; border-radius: 5px; background: #fff; }
+    .iban-box { font-family: monospace; font-size: 0.95rem; font-weight: bold; color: var(--negro-suave); margin-top: 5px; border: 1px solid #eee; padding: 6px; border-radius: 5px; background: #fff; }
 
-    footer { text-align: center; padding: 25px; background: #fff; border-top: 1px solid #eee; font-size: 0.85rem; }
+    footer { text-align: center; padding: 20px; background: #fff; border-top: 1px solid #eee; font-size: 0.8rem; }
   </style>
 </head>
 <body>
@@ -125,7 +123,7 @@
     <li onclick="scrollToId('ubicacion')" data-i18n="nav_ubicacion">Ubicación</li>
     <li onclick="scrollToId('rsvp')" data-i18n="nav_asistencia">Asistencia</li>
     <li onclick="scrollToId('regalo')" data-i18n="nav_regalo">Regalo</li>
-    <li onclick="irATurismo()" data-i18n="nav_info">Información Adicional</li>
+    <li onclick="irATurismo()" data-i18n="nav_info">Información</li>
     <li class="lang-switch" onclick="setLang('es')">ES</li>
     <li class="lang-switch" onclick="setLang('it')">IT</li>
   </ul>
@@ -143,18 +141,18 @@
 </header>
 
 <section class="countdown-section">
-  <h2 data-i18n="nos_casamos">¡Nos casamos el 1 de agosto!</h2>
+  <h2 data-i18n="nos_casamos" style="font-size: 1.4rem;">¡Nos casamos el 1 de agosto!</h2>
   <div id="countdown" class="countdown"></div>
 </section>
 
 <section id="bienvenida">
   <div class="welcome-text">
-    <p data-i18n="bienvenida_texto">“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables. ¡Estamos deseando celebrar nuestro gran día con todos vosotros!”</p>
+    <p data-i18n="bienvenida_texto">“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables.”</p>
   </div>
 </section>
 
 <section id="itinerario">
-  <h2 data-i18n="itinerario">Itinerario del Gran Día</h2>
+  <h2 data-i18n="itinerario">Itinerario</h2>
   <div class="card-container">
     <div class="card-item"><img src="IMG/marriage.png" class="it-img"><span class="hora">12:30</span><p data-i18n="ceremonia">Ceremonia civil</p></div>
     <div class="card-item"><img src="IMG/cheers.png" class="it-img"><span class="hora">13:30</span><p data-i18n="cocktail">Cóctel de bienvenida</p></div>
@@ -166,22 +164,12 @@
 <section id="ubicacion">
   <h2 data-i18n="ubicacion_titulo">Ubicación</h2>
   <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
-    <p style="margin-bottom: 5px;"><strong>Restaurante El Nuevo Molino</strong></p>
-    <p style="font-size: 0.95rem; margin-top: 0;">Bo. Monseñor, 18, 39478 Arce, Cantabria</p>
-    
+    <p style="margin-bottom: 2px;"><strong>Restaurante El Nuevo Molino</strong></p>
+    <p style="font-size: 0.9rem; margin-top: 0;">Bo. Monseñor, 18, Puente Arce, Cantabria</p>
     <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.42777174643!2d-3.951109823419082!3d43.40609677111531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e38880b734fa1%3A0x4a8ec36a7fcb3273!2sEl%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" 
-        width="100%" 
-        height="100%" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.42784534123!2d-3.931754623415175!3d43.411425068019675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e38880b734fa5%3A0xca8ec36a7f323273!2sEl%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1715800000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy"></iframe>
     </div>
-
-    <a href="https://maps.app.goo.gl/uXvE1wA9qVpS1n7A6" target="_blank" class="btn-main" data-i18n="como_llegar">
+    <a href="https://maps.app.goo.gl/YV9GvWvYvYvYvYvY7" target="_blank" class="btn-main" data-i18n="como_llegar">
       <i class="fa-solid fa-location-dot"></i> Cómo llegar
     </a>
   </div>
@@ -190,9 +178,9 @@
 <section id="rsvp">
   <div style="text-align: center;">
     <h2 data-i18n="confirmar">¿Nos acompañas?</h2>
-    <p data-i18n="rsvp_p">Por favor, confirma tu asistencia antes del 1 de junio de 2026.</p>
+    <p data-i18n="rsvp_p" style="font-size: 0.95rem;">Confirma antes del 1 de junio de 2026.</p>
     <a href="https://forms.gle/2uurApQkp68dGx13A" target="_blank" class="btn-main" data-i18n="confirm_btn">
-      <i class="fa-solid fa-calendar-check"></i> Confirmar Asistencia
+      Confirmar Asistencia
     </a>
   </div>
 </section>
@@ -201,11 +189,9 @@
   <h2 data-i18n="regalo_titulo">Regalo</h2>
   <div class="card-container">
     <div class="card-item">
-      <i class="fa-solid fa-gift" style="font-size: 1.8rem; color: var(--dorado);"></i>
-      <p data-i18n="regalo_texto" style="font-size: 0.9rem;">Vuestra presencia es el mejor regalo, pero si queréis ayudarnos con nuestro viaje:</p>
+      <p data-i18n="regalo_texto" style="font-size: 0.85rem;">Si queréis ayudarnos con nuestro viaje:</p>
       <div class="iban-box" id="ibanText">ES12 3456 7890 1234 5678 9012</div>
       <button class="btn-copy" onclick="copyIban()" id="copyBtn" data-i18n="copiar">Copiar IBAN</button>
-      <p style="font-size: 0.75rem; margin-top: 5px; color: #888;">Titulares: Claudia & Alberto</p>
     </div>
   </div>
 </section>
@@ -215,25 +201,25 @@
 <script>
   const translations = {
     es: { 
-      nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_regalo: "Regalo", nav_asistencia: "Asistencia", nav_info: "Información Adicional", nav_ubicacion: "Ubicación",
-      hero_date: "01 . 08 . 2026", nos_casamos: "¡Nos casamos el 1 de agosto!", itinerario: "Itinerario", 
-      bienvenida_texto: "“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables. ¡Estamos deseando celebrar nuestro gran día con todos vosotros!”",
-      ceremonia: "Ceremonia civil", cocktail: "Cóctel de bienvenida", banquete: "Banquete nupcial", baile: "Baile y barra libre", 
+      nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_regalo: "Regalo", nav_asistencia: "Asistencia", nav_info: "Turismo", nav_ubicacion: "Ubicación",
+      hero_date: "01 . 08 . 2026", nos_casamos: "¡Nos casamos!", itinerario: "Itinerario", 
+      bienvenida_texto: "“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables.”",
+      ceremonia: "Ceremonia civil", cocktail: "Cóctel", banquete: "Banquete", baile: "Fiesta", 
       ubicacion_titulo: "Ubicación", como_llegar: "Cómo llegar",
-      regalo_titulo: "Regalo", regalo_texto: "Vuestra presencia es el mejor regalo, pero si queréis ayudarnos con nuestro viaje:",
-      confirmar: "¿Nos acompañas?", rsvp_p: "Confirma tu asistencia antes del 1 de junio de 2026.", 
+      regalo_titulo: "Regalo", regalo_texto: "Si queréis ayudarnos con nuestro viaje:",
+      confirmar: "¿Nos acompañas?", rsvp_p: "Confirma antes del 1 de junio de 2026.", 
       confirm_btn: "Confirmar Asistencia", copiar: "Copiar IBAN", copiado: "¡Copiado!",
       time: ["Días","Hrs","Min"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️"
     },
     it: { 
-      nav_inicio: "Inizio", nav_itinerario: "Programma", nav_regalo: "Regalo", nav_asistencia: "Partecipazione", nav_info: "Informazioni", nav_ubicacion: "Ubicazione",
-      hero_date: "01 . 08 . 2026", nos_casamos: "Ci sposiamo il 1° agosto!", itinerario: "Programma", 
-      bienvenida_texto: "“Ci sono momenti nella vita che sono speciali di per sé, ma condividerli con le persone che amiamo di più li rende indimenticabili. Non vediamo l'ora di festeggiare il nostro grande giorno con tutti voi!”",
-      ceremonia: "Cerimonia civile", cocktail: "Aperitivo di benvenuto", banquete: "Banchetto nuziale", baile: "Festa e open bar", 
+      nav_inicio: "Inizio", nav_itinerario: "Programma", nav_regalo: "Regalo", nav_asistencia: "RSVP", nav_info: "Turismo", nav_ubicacion: "Ubicazione",
+      hero_date: "01 . 08 . 2026", nos_casamos: "Ci sposiamo!", itinerario: "Programma", 
+      bienvenida_texto: "“Ci sono momenti nella vita che sono speciali di per sé, ma condividerli con le persone che amiamo di più li rende indimenticabili.”",
+      ceremonia: "Cerimonia", cocktail: "Aperitivo", banquete: "Banchetto", baile: "Festa", 
       ubicacion_titulo: "Ubicazione", como_llegar: "Come arrivare",
-      regalo_titulo: "Regalo", regalo_texto: "La vostra presenza è il regalo più grande, ma se volete aiutarci con il nostro viaggio:",
-      confirmar: "Sarai dei nostri?", rsvp_p: "Per favore, conferma la tua presenza entro il 1° giugno 2026.", 
-      confirm_btn: "Confermare Partecipazione", copiar: "Copia IBAN", copiado: "Copiato!",
+      regalo_titulo: "Regalo", regalo_texto: "Se volete aiutarci con il nostro viaggio:",
+      confirmar: "Sarai dei nostri?", rsvp_p: "Conferma entro il 1° giugno 2026.", 
+      confirm_btn: "Conferma Partecipazione", copiar: "Copia IBAN", copiado: "Copiato!",
       time: ["Giorni","Ore","Min"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️"
     }
   };
@@ -246,7 +232,6 @@
     });
     updateCountdown();
   }
-
   function irATurismo() { window.location.href = currentLang === 'it' ? 'turismo-it.html' : 'turismo-es.html'; }
   function copyIban() {
     const iban = document.getElementById("ibanText").innerText;
@@ -255,7 +240,7 @@
     btn.innerText = translations[currentLang].copiado;
     setTimeout(() => { btn.innerText = translations[currentLang].copiar; }, 2000);
   }
-  function scrollToId(id) { window.scrollTo({ top: document.getElementById(id).offsetTop - 60, behavior: "smooth" }); }
+  function scrollToId(id) { window.scrollTo({ top: document.getElementById(id).offsetTop - 50, behavior: "smooth" }); }
 
   function updateCountdown() {
     const target = new Date("2026-08-01T12:30:00");
@@ -266,10 +251,8 @@
     const t = translations[currentLang].time;
     el.innerHTML = `<div class="circle"><span>${d}</span><small>${t[0]}</small></div><div class="circle"><span>${h}</span><small>${t[1]}</small></div><div class="circle"><span>${m}</span><small>${t[2]}</small></div>`;
   }
-  setInterval(updateCountdown, 60000); // Actualiza cada minuto ya que no hay segundos
+  setInterval(updateCountdown, 60000);
   updateCountdown();
 </script>
 </body>
 </html>
-
-
