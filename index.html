@@ -39,19 +39,20 @@
     header h1 { font-size: clamp(2.8rem, 9vw, 5.5rem); text-shadow: 2px 2px 15px rgba(0,0,0,0.4); }
     header p { font-size: 1.4rem; margin-top: 10px; letter-spacing: 3px; font-weight: 300; }
 
-    /* SECCIONES */
-    section { padding: 50px 20px; max-width: 800px; margin: auto; }
-
-    /* BIENVENIDA */
-    .welcome-text { text-align: center; font-size: 1.2rem; font-style: italic; max-width: 600px; margin: 0 auto; }
-
-    /* LOCALIZACIÓN */
-    .map-container { 
-      margin-top: 25px; border-radius: 15px; overflow: hidden; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 4px solid white;
-      height: 350px; width: 100%; max-width: 550px; margin-left: auto; margin-right: auto;
+    /* COUNTDOWN RESTAURADO */
+    .countdown-section { padding: 60px 20px 40px 20px; text-align: center; }
+    .countdown { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+    .circle { 
+      width: 100px; height: 100px; border-radius: 50%;
+      background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; 
+      border: 2px solid var(--dorado); box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
-    iframe { width: 100%; height: 100%; border: 0; }
+    .circle span { font-size: 2rem; font-weight: bold; line-height: 1; color: var(--dorado); }
+    .circle small { font-size: 0.7rem; text-transform: uppercase; margin-top: 5px; color: var(--gris); }
+
+    /* SECCIONES GENERALES */
+    section { padding: 50px 20px; max-width: 800px; margin: auto; }
+    .welcome-text { text-align: center; font-size: 1.2rem; font-style: italic; max-width: 600px; margin: 0 auto; color: var(--gris); }
 
     /* TARJETAS UNIFICADAS */
     .card-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 25px; }
@@ -62,6 +63,14 @@
     }
     .it-img { width: 45px; height: 45px; filter: invert(86%) sepia(13%) saturate(1048%) hue-rotate(331deg) brightness(97%) contrast(91%); }
     .hora { font-weight: 700; color: var(--dorado); font-size: 1.2rem; }
+
+    /* UBICACIÓN */
+    .map-container { 
+      margin: 25px auto; border-radius: 15px; overflow: hidden; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 4px solid white;
+      height: 350px; width: 100%; max-width: 550px;
+    }
+    iframe { width: 100%; height: 100%; border: 0; }
 
     /* BOTONES */
     .btn-main { 
@@ -76,7 +85,7 @@
       background: var(--blanco); color: var(--dorado); border: 1px dashed var(--dorado);
       padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; margin-top: 10px;
     }
-    .iban-box { font-family: monospace; font-size: 1.1rem; font-weight: bold; color: var(--negro-suave); margin-top: 10px; }
+    .iban-box { font-family: monospace; font-size: 1.1rem; font-weight: bold; color: var(--negro-suave); margin-top: 10px; border: 1px solid #eee; padding: 10px; border-radius: 5px; background: #fff; }
 
     footer { text-align: center; padding: 30px; background: #fff; border-top: 1px solid #eee; font-size: 0.9rem; }
   </style>
@@ -129,11 +138,11 @@
 <section id="ubicacion">
   <h2 data-i18n="ubicacion_titulo">Ubicación</h2>
   <div style="text-align: center;">
-    <p><strong>Nuevo Molino de Puente Arce</strong><br>Puente Arce, Cantabria</p>
+    <p><strong>Restaurante El Nuevo Molino</strong><br>Puente Arce, Cantabria</p>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.048733224749!2d-3.9312158!3d43.4019234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4f9b87063f2b%3A0xe67c94158913b567!2sRestaurante%20El%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1700000000000"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2899.7042854955747!2d-3.9317540234199984!3d43.40411786844975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4ec133226a2731%3A0xc3911b69325992a5!2sRestaurante%20El%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1710000000000!5m2!1ses!2ses"></iframe>
     </div>
-    <a href="https://maps.app.goo.gl/yYvEizjGqUuCozBCA" target="_blank" class="btn-main" data-i18n="como_llegar">
+    <a href="https://maps.app.goo.gl/9Z4W8pU8k9gW9X9T9" target="_blank" class="btn-main" data-i18n="como_llegar">
       <i class="fa-solid fa-location-dot"></i> Cómo llegar
     </a>
   </div>
@@ -191,6 +200,7 @@
   };
 
   let currentLang = 'es';
+
   function setLang(lang) {
     currentLang = lang;
     Object.keys(translations[lang]).forEach(key => {
