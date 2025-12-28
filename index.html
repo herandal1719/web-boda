@@ -47,27 +47,16 @@
     header h1 { font-size: clamp(2.8rem, 9vw, 5.5rem); text-shadow: 2px 2px 15px rgba(0,0,0,0.4); }
     header p { font-size: 1.4rem; margin-top: 10px; letter-spacing: 3px; font-weight: 300; }
 
-    /* SECCIÓN COUNTDOWN (FONDO INTEGRADO) */
-    .countdown-section {
-      background: var(--blanco); /* Fondo igual al resto de la página */
-      padding: 60px 20px 40px 20px;
-      text-align: center;
-    }
-    .countdown-section h2 { margin-bottom: 35px; font-size: 2.2rem; }
+    /* COUNTDOWN */
+    .countdown-section { padding: 60px 20px 40px 20px; text-align: center; }
     .countdown { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
     .circle { 
       width: 105px; height: 105px; border-radius: 50%;
-      background: white; /* Círculos en blanco para que resalten sobre el crema */
-      display: flex; flex-direction: column; align-items: center; justify-content: center; 
-      border: 2px solid var(--dorado);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      color: var(--negro-suave);
+      background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; 
+      border: 2px solid var(--dorado); box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
     .circle span { font-size: 2.2rem; font-weight: bold; line-height: 1; color: var(--dorado); }
     .circle small { font-size: 0.75rem; text-transform: uppercase; margin-top: 5px; color: var(--gris); }
-
-    /* ESPACIO REDUCIDO ENTRE SECCIONES */
-    section { padding: 40px 20px; max-width: 1100px; margin: auto; }
 
     /* ITINERARIO */
     .itinerario-grid { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 25px; }
@@ -76,16 +65,25 @@
       width: 100%; max-width: 550px; display: flex; flex-direction: column; align-items: center; text-align: center;
       gap: 10px; border-top: 5px solid var(--dorado);
     }
-    .it-icon { font-size: 2rem; color: var(--dorado); }
+    
+    /* ESTILO PARA LOS ICONOS PNG PERSONALIZADOS */
+    .it-icon { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
+    .it-img { 
+      width: 45px; height: 45px; object-fit: contain;
+      /* Filtro para convertir la imagen a color dorado #E8C39A */
+      filter: invert(86%) sepia(13%) saturate(1048%) hue-rotate(331deg) brightness(97%) contrast(91%);
+    }
+
     .it-info .hora { font-weight: 700; color: var(--dorado); display: block; font-size: 1.2rem; }
 
     /* TURISMO */
+    section { padding: 40px 20px; max-width: 1100px; margin: auto; }
     .grid-turismo { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
     .card-turismo { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--dorado); }
     .card-turismo img { width: 100%; height: 200px; object-fit: cover; }
     .info-turismo { padding: 20px; }
 
-    /* BOTÓN RSVP */
+    /* RSVP */
     .rsvp-box { 
       background: white; padding: 40px 20px; border-radius: 20px; 
       box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; 
@@ -134,22 +132,27 @@
 <section id="itinerario">
   <h2 data-i18n="itinerario">Itinerario del Gran Día</h2>
   <div class="itinerario-grid">
+    
     <div class="itinerario-item">
-      <div class="it-icon"><i class="fa-solid fa-ring"></i></div>
+      <div class="it-icon"><img src="IMG/marriage.png" class="it-img" alt="Ceremonia"></div>
       <div class="it-info"><span class="hora">12:30</span><p data-i18n="ceremonia">Ceremonia civil</p></div>
     </div>
+
     <div class="itinerario-item">
-      <div class="it-icon"><i class="fa-solid fa-martini-glass-citrus"></i></div>
+      <div class="it-icon"><img src="IMG/cheers.png" class="it-img" alt="Cocktail"></div>
       <div class="it-info"><span class="hora">13:30</span><p data-i18n="cocktail">Cóctel de bienvenida</p></div>
     </div>
+
     <div class="itinerario-item">
-      <div class="it-icon"><i class="fa-solid fa-utensils"></i></div>
+      <div class="it-icon"><img src="IMG/banquet.png" class="it-img" alt="Banquete"></div>
       <div class="it-info"><span class="hora">14:30</span><p data-i18n="banquete">Banquete nupcial</p></div>
     </div>
+
     <div class="itinerario-item">
-      <div class="it-icon"><i class="fa-solid fa-compact-disc"></i></div>
+      <div class="it-icon"><img src="IMG/disco-ball.png" class="it-img" alt="Fiesta"></div>
       <div class="it-info"><span class="hora">19:00</span><p data-i18n="baile">Baile y barra libre</p></div>
     </div>
+
   </div>
 </section>
 
@@ -226,7 +229,7 @@
       date: "PUENTE ARCE", nos_casamos: "¡Nos casamos el 1 de agosto!", itinerario: "Itinerario del Gran Día", ceremonia: "Ceremonia civil", cocktail: "Cóctel de bienvenida", banquete: "Banquete nupcial", baile: "Baile y barra libre", 
       santander: "Qué hacer en Santander", faro_desc: "Vistas espectaculares.", sardinero_desc: "Playa emblemática.", magdalena_desc: "Palacio real.", 
       vecinos_titulo: "Cantabria Infinita", santillana_desc: "Villa medieval.", comillas_desc: "Arquitectura modernista.", potes_desc: "Picos de Europa.",
-      ciudades_titulo: "Ciudades próximas", bilbao_desc: "Museo Guggenheim.", sanse_desc: "Playa de la Concha.", asturias_desc: "Encanto asturiano.",
+      ciudades_titulo: "Ciudades próximas", bilbao_desc: "Museo Guggenheim.", sanse_desc: "Playa de la concha.", asturias_desc: "Encanto asturiano.",
       confirmar: "¿Nos acompañas?", rsvp_p: "Confirma tu asistencia antes del 1 de junio de 2026.", confirm_btn: "Confirmar Asistencia", time: ["Días","Hrs","Min","Seg"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️"
     },
     it: { 
