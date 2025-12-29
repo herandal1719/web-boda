@@ -123,7 +123,7 @@
     <li onclick="scrollToId('ubicacion')" data-i18n="nav_ubicacion">Ubicación</li>
     <li onclick="scrollToId('rsvp')" data-i18n="nav_asistencia">Asistencia</li>
     <li onclick="scrollToId('regalo')" data-i18n="nav_regalo">Regalo</li>
-    <li onclick="irATurismo()" data-i18n="nav_info">Información adicional</li>
+    <li onclick="irATurismo()" data-i18n="nav_info">Información</li>
     <li class="lang-switch" onclick="setLang('es')">ES</li>
     <li class="lang-switch" onclick="setLang('it')">IT</li>
   </ul>
@@ -154,12 +154,12 @@
 <section id="itinerario">
   <h2 data-i18n="itinerario">Itinerario</h2>
   <div class="card-container">
-    <div class="card-item"><img src="IMG/autobus.png" class="it-img"><span class="hora">12:00</span><p data-i18n="bus1">Bus desde Santander</p></div>
+    <div class="card-item"><img src="IMG/autobus.png" class="it-img"><span class="hora">12:00</span><p data-i18n="bus_ida">Bus desde Santander</p></div>
     <div class="card-item"><img src="IMG/marriage.png" class="it-img"><span class="hora">12:30</span><p data-i18n="ceremonia">Ceremonia</p></div>
     <div class="card-item"><img src="IMG/cheers.png" class="it-img"><span class="hora">13:30</span><p data-i18n="cocktail">Cóctel de bienvenida</p></div>
     <div class="card-item"><img src="IMG/banquet.png" class="it-img"><span class="hora">14:30</span><p data-i18n="banquete">Banquete nupcial</p></div>
     <div class="card-item"><img src="IMG/disco-ball.png" class="it-img"><span class="hora">19:00</span><p data-i18n="baile">Baile y barra libre</p></div>
-    <div class="card-item"><img src="IMG/autobus-vuelta.PNG" class="it-img"><span class="hora">23:30</span><p data-i18n="bus2">Bus de vuelta</p></div>
+    <div class="card-item"><img src="IMG/autobus-vuelta.PNG" class="it-img"><span class="hora">23:30</span><p data-i18n="bus_vuelta">Bus de vuelta</p></div>
   </div>
 </section>
 
@@ -169,9 +169,9 @@
     <p style="margin-bottom: 2px;"><strong>Restaurante El Nuevo Molino</strong></p>
     <p style="font-size: 0.9rem; margin-top: 0;">Bo. Monseñor, 18, Puente Arce, Cantabria</p>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.42784534123!2d-3.931754623415175!3d43.411425068019675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e38880b734fa5%3A0xca8ec36a7f323273!2sEl%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1715800000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.4223253724395!2d-3.92956242337775!3d43.43105766675003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e38880b734fa5%3A0x4a8ec36a7f333273!2sRestaurante%20El%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1710000000000" allowfullscreen="" loading="lazy"></iframe>
     </div>
-    <a href="https://maps.app.goo.gl/YV9GvWvYvYvYvYvY7" target="_blank" class="btn-main" data-i18n="como_llegar">
+    <a href="https://maps.app.goo.gl/ChIJoU9zC4g4SQ0RczLHf2rDjks" target="_blank" class="btn-main" data-i18n="como_llegar">
       <i class="fa-solid fa-location-dot"></i> Cómo llegar
     </a>
   </div>
@@ -188,12 +188,16 @@
 </section>
 
 <section id="regalo">
-  <h2 data-i18n="regalo_titulo">Regalo</h2>
+  <h2 data-i18n="regalo_titulo">Un detalle</h2>
   <div class="card-container">
-    <div class="card-item">
-      <p data-i18n="regalo_texto" style="font-size: 0.85rem;">Si queréis ayudarnos con nuestro viaje:</p>
+    <div class="card-item" style="padding: 25px;">
+      <i class="fa-solid fa-heart" style="font-size: 1.5rem; color: var(--dorado); margin-bottom: 10px;"></i>
+      <p data-i18n="regalo_texto" style="font-size: 1rem; font-style: italic; line-height: 1.6;">
+        "Vuestra presencia en nuestro gran día es el mayor regalo que podríamos recibir. Sin embargo, si deseáis colaborar con nuestra nueva etapa y nuestro viaje de novios, os dejamos aquí cómo hacerlo."
+      </p>
       <div class="iban-box" id="ibanText">ES12 3456 7890 1234 5678 9012</div>
       <button class="btn-copy" onclick="copyIban()" id="copyBtn" data-i18n="copiar">Copiar IBAN</button>
+      <p style="font-size: 0.8rem; margin-top: 10px; color: #999; font-weight: bold;">Claudia & Alberto</p>
     </div>
   </div>
 </section>
@@ -206,22 +210,22 @@
       nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_regalo: "Regalo", nav_asistencia: "Asistencia", nav_info: "Turismo", nav_ubicacion: "Ubicación",
       hero_date: "01 . 08 . 2026", nos_casamos: "¡Nos casamos!", itinerario: "Itinerario", 
       bienvenida_texto: "“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables.”",
-      ceremonia: "Ceremonia civil", cocktail: "Cóctel", banquete: "Banquete", baile: "Fiesta", 
+      bus_ida: "Bus desde Santander", ceremonia: "Ceremonia", cocktail: "Cóctel", banquete: "Banquete", baile: "Fiesta", bus_vuelta: "Bus de vuelta",
       ubicacion_titulo: "Ubicación", como_llegar: "Cómo llegar",
-      regalo_titulo: "Regalo", regalo_texto: "Si queréis ayudarnos con nuestro viaje:",
+      regalo_titulo: "Un detalle", regalo_texto: "Vuestra presencia en nuestro gran día es el mayor regalo que podríamos recibir. Sin embargo, si deseáis colaborar con nuestra nueva etapa y nuestro viaje de novios, os dejamos aquí cómo hacerlo.",
       confirmar: "¿Nos acompañas?", rsvp_p: "Confirma antes del 1 de junio de 2026.", 
-      confirm_btn: "Confirmar Asistencia", copiar: "Copiar IBAN", copiado: "¡Copiado!",
+      confirm_btn: "Confirmar Asistencia", copiar: "Copiar IBAN", copiado: "¡Copiado con cariño!",
       time: ["Días","Hrs","Min"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️"
     },
     it: { 
-      nav_inicio: "Inizio", nav_itinerario: "Programma", nav_regalo: "Regalo", nav_asistencia: "RSVP", nav_info: "Informazioni aggiuntive", nav_ubicacion: "Ubicazione",
+      nav_inicio: "Inizio", nav_itinerario: "Programma", nav_regalo: "Regalo", nav_asistencia: "RSVP", nav_info: "Turismo", nav_ubicacion: "Ubicazione",
       hero_date: "01 . 08 . 2026", nos_casamos: "Ci sposiamo!", itinerario: "Programma", 
       bienvenida_texto: "“Ci sono momenti nella vita che sono speciali di per sé, ma condividerli con le persone che amiamo di più li rende indimenticabili.”",
-      bus1:"Bus da Santander",ceremonia: "Cerimonia", cocktail: "Aperitivo", banquete: "Banchetto", baile: "Festa", bus2:"Tornata a Santander",
+      bus_ida: "Navetta da Santander", ceremonia: "Cerimonia", cocktail: "Aperitivo", banquete: "Banchetto", baile: "Festa", bus_vuelta: "Navetta di ritorno",
       ubicacion_titulo: "Ubicazione", como_llegar: "Come arrivare",
-      regalo_titulo: "Regalo", regalo_texto: "Se volete aiutarci con il nostro viaggio:",
+      regalo_titulo: "Un pensiero", regalo_texto: "La vostra presenza nel nostro grande giorno è il regalo più bello che potremmo ricevere. Tuttavia, se desiderate contribuire alla nostra nuova vita insieme e al nostro viaggio di nozze, ecco come potete fare.",
       confirmar: "Sarai dei nostri?", rsvp_p: "Conferma entro il 1° giugno 2026.", 
-      confirm_btn: "Conferma Partecipazione", copiar: "Copia IBAN", copiado: "Copiato!",
+      confirm_btn: "Conferma Partecipazione", copiar: "Copia IBAN", copiado: "Copiato con affetto!",
       time: ["Giorni","Ore","Min"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️"
     }
   };
@@ -258,10 +262,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
