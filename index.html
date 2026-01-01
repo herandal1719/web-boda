@@ -9,16 +9,26 @@
 
   <style>
     :root {
-      --rosa: #F8E1E9;
       --blanco: #FFF8F0;
       --dorado: #E8C39A;
       --gris: #555;
+      --gris-claro: #ddd;
       --negro-suave: #333;
     }
 
     * { box-sizing: border-box; scroll-behavior: smooth; }
     body { margin: 0; font-family: 'Lato', sans-serif; background: var(--blanco); color: var(--gris); line-height: 1.4; overflow-x: hidden; }
     h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--negro-suave); text-align: center; margin-top: 0; margin-bottom: 10px; }
+
+    /* SEPARADOR SUTIL */
+    .separator {
+      display: flex; align-items: center; justify-content: center;
+      margin: 40px auto; width: 60%; max-width: 200px;
+    }
+    .separator::before, .separator::after {
+      content: ""; flex: 1; height: 1px; background: var(--dorado); opacity: 0.5;
+    }
+    .separator i { color: var(--dorado); margin: 0 10px; font-size: 0.8rem; }
 
     /* NAVBAR */
     nav { position: fixed; top: 0; width: 100%; background: rgba(255,248,240,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; }
@@ -28,97 +38,59 @@
     .lang-switch { color: var(--dorado); cursor: pointer; border-left: 1px solid #ddd; padding-left: 10px !important; }
 
     /* HERO */
-    header { 
-      height: 80vh; min-height: 500px; position: relative;
-      display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
-      text-align: center; color: white; overflow: hidden;
-    }
+    header { height: 80vh; min-height: 500px; position: relative; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; color: white; overflow: hidden; }
     .hero-images { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; z-index: 1; }
     .hero-img { width: 50%; height: 100%; background-size: cover; background-position: center 20%; filter: brightness(0.85); }
-    
-    @media (max-width: 600px) {
-        .hero-images { flex-direction: column; }
-        .hero-img { width: 100%; height: 50%; }
-        header { height: 85vh; }
-    }
-
-    header::after {
-      content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); z-index: 2;
-    }
-
+    @media (max-width: 600px) { .hero-images { flex-direction: column; } .hero-img { width: 100%; height: 50%; } header { height: 85vh; } }
+    header::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); z-index: 2; }
     .hero-content { position: relative; z-index: 3; width: 100%; padding-bottom: 30px; }
     header h1 { color: white; margin: 0; font-size: clamp(2rem, 8vw, 4rem); text-shadow: 2px 2px 10px rgba(0,0,0,0.4); }
     header p { color: white; font-size: 1.1rem; margin-top: 5px; letter-spacing: 5px; font-family: 'Playfair Display', serif; }
 
-    /* SECCIONES */
-    section { padding: 25px 20px; max-width: 800px; margin: auto; }
-
     /* COUNTDOWN */
     .countdown-section { padding-top: 35px; text-align: center; }
-    .countdown { 
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-        max-width: 400px;
-        margin: 15px auto;
-    }
-    
-    @media (max-width: 480px) {
-        .countdown { 
-            grid-template-columns: repeat(2, 1fr);
-            max-width: 180px;
-        }
-    }
-
-    .box { 
-      aspect-ratio: 1/1;
-      border-radius: 12px;
-      background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; 
-      border: 2px solid var(--dorado); box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    }
+    .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 400px; margin: 15px auto; }
+    @media (max-width: 480px) { .countdown { grid-template-columns: repeat(2, 1fr); max-width: 180px; } }
+    .box { aspect-ratio: 1/1; border-radius: 12px; background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px solid var(--dorado); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
     .box span { font-size: 1.5rem; font-weight: bold; line-height: 1; color: var(--dorado); }
     .box small { font-size: 0.6rem; text-transform: uppercase; color: var(--gris); margin-top: 4px; }
 
-    /* ITINERARIO */
-    .card-container { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 15px; }
-    .card-item { 
-      background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-      width: 100%; max-width: 450px; display: flex; flex-direction: column; align-items: center; text-align: center;
-      gap: 5px; border-top: 3px solid var(--dorado);
+    /* TIMELINE UNIFICADO */
+    .timeline-card {
+      background: white; padding: 30px 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      width: 100%; max-width: 500px; margin: 20px auto; position: relative;
     }
+    .timeline-item {
+      display: flex; align-items: flex-start; gap: 20px; position: relative; padding-bottom: 30px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    /* La línea vertical */
+    .timeline-item::before {
+      content: ""; position: absolute; left: 17px; top: 35px; width: 2px; height: calc(100% - 30px);
+      background: var(--dorado); opacity: 0.4;
+    }
+    .timeline-item:last-child::before { display: none; }
     
-    /* TARJETA INVERTIDA PARA PREBODA */
-    .card-preboda {
-      background: var(--dorado) !important;
-      color: white !important;
-      border-top: none !important;
+    .tl-icon-container {
+      width: 36px; height: 36px; background: white; border: 2px solid var(--dorado);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      z-index: 2; flex-shrink: 0;
     }
-    .card-preboda .hora, .card-preboda p { color: white !important; }
-    .card-preboda .it-img { filter: brightness(0) invert(1) !important; }
-    .card-preboda .preboda-date { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; font-weight: bold; }
+    .tl-icon-container img { width: 18px; height: 18px; filter: contrast(0.5); }
+    .tl-content { text-align: left; }
+    .tl-time { font-weight: bold; color: var(--dorado); font-size: 0.9rem; display: block; }
+    .tl-title { font-weight: 700; color: var(--negro-suave); margin: 0; }
+    .tl-preboda { background: var(--dorado); border-color: var(--dorado); }
+    .tl-preboda img { filter: brightness(0) invert(1) !important; }
 
-    .it-img { width: 35px; height: 35px; filter: invert(86%) sepia(13%) saturate(1048%) hue-rotate(331deg) brightness(97%) contrast(91%); }
-    .hora { font-weight: 700; color: var(--dorado); font-size: 1rem; }
+    /* SECCIONES */
+    section { padding: 40px 20px; max-width: 800px; margin: auto; }
 
-    /* MAPA */
-    .map-container { 
-      margin: 15px auto; border-radius: 15px; overflow: hidden; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 4px solid white;
-      height: 280px; width: 100%; max-width: 500px;
-    }
+    /* MAPA Y BOTONES */
+    .map-container { margin: 15px auto; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 4px solid white; height: 280px; width: 100%; max-width: 500px; }
     iframe { width: 100%; height: 100%; border: 0; }
-
-    /* BOTONES */
-    .btn-main { 
-      background: var(--dorado); color: white; padding: 12px 30px; 
-      border-radius: 50px; text-decoration: none; font-weight: bold; 
-      display: inline-block; margin-top: 10px; transition: 0.3s; font-size: 0.9rem; border: none; cursor: pointer;
-    }
-    .btn-copy {
-      background: var(--blanco); color: var(--dorado); border: 1px dashed var(--dorado);
-      padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.7rem; margin-top: 5px;
-    }
+    .btn-main { background: var(--dorado); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px; transition: 0.3s; font-size: 0.9rem; border: none; cursor: pointer; }
+    .btn-copy { background: var(--blanco); color: var(--dorado); border: 1px dashed var(--dorado); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.7rem; margin-top: 5px; }
     .iban-box { font-family: monospace; font-size: 0.95rem; font-weight: bold; color: var(--negro-suave); margin-top: 5px; border: 1px solid #eee; padding: 6px; border-radius: 5px; background: #fff; }
 
     footer { text-align: center; padding: 20px; background: #fff; border-top: 1px solid #eee; font-size: 0.8rem; }
@@ -151,68 +123,116 @@
 </header>
 
 <section class="countdown-section">
-  <h2 data-i18n="nos_casamos" style="font-size: 1.4rem;">¡Nos casamos!</h2>
+  <h2 data-i18n="nos_casamos">¡Nos casamos!</h2>
   <div id="countdown" class="countdown"></div>
 </section>
 
+<div class="separator"><i class="fa-solid fa-diamond"></i></div>
+
 <section id="bienvenida">
-  <div class="welcome-text">
+  <div class="welcome-text" style="text-align: center; font-style: italic;">
     <p data-i18n="bienvenida_texto">“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables.”</p>
   </div>
 </section>
 
+<div class="separator"><i class="fa-solid fa-diamond"></i></div>
+
 <section id="itinerario">
   <h2 data-i18n="itinerario">Itinerario</h2>
-  <div class="card-container">
-    <div class="card-item card-preboda">
-      <span class="preboda-date" data-i18n="preboda_fecha">31 de Julio de 2026</span>
-      <img src="IMG/cheers.png" class="it-img">
-      <span class="hora">20:30</span>
-      <p data-i18n="preboda">Preboda</p>
+  <div class="timeline-card">
+    
+    <div class="timeline-item">
+      <div class="tl-icon-container tl-preboda"><img src="IMG/cheers.png"></div>
+      <div class="tl-content">
+        <span class="tl-time">31 JUL · 20:30</span>
+        <p class="tl-title" data-i18n="preboda">Preboda</p>
+      </div>
     </div>
 
-    <div class="card-item"><img src="IMG/autobus.png" class="it-img"><span class="hora">12:00</span><p data-i18n="bus_ida">Bus desde Santander</p></div>
-    <div class="card-item"><img src="IMG/marriage.png" class="it-img"><span class="hora">12:30</span><p data-i18n="ceremonia">Ceremonia</p></div>
-    <div class="card-item"><img src="IMG/cheers.png" class="it-img"><span class="hora">13:30</span><p data-i18n="cocktail">Cóctel de bienvenida</p></div>
-    <div class="card-item"><img src="IMG/banquet.png" class="it-img"><span class="hora">14:30</span><p data-i18n="banquete">Banquete nupcial</p></div>
-    <div class="card-item"><img src="IMG/disco-ball.png" class="it-img"><span class="hora">19:00</span><p data-i18n="baile">Baile y barra libre</p></div>
-    <div class="card-item"><img src="IMG/autobus-vuelta.PNG" class="it-img"><span class="hora">23:30</span><p data-i18n="bus_vuelta">Bus de vuelta</p></div>
+    <div class="timeline-item">
+      <div class="tl-icon-container"><img src="IMG/autobus.png"></div>
+      <div class="tl-content">
+        <span class="tl-time">01 AGO · 12:00</span>
+        <p class="tl-title" data-i18n="bus_ida">Bus desde Santander</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-icon-container"><img src="IMG/marriage.png"></div>
+      <div class="tl-content">
+        <span class="tl-time">12:30</span>
+        <p class="tl-title" data-i18n="ceremonia">Ceremonia</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-icon-container"><img src="IMG/cheers.png"></div>
+      <div class="tl-content">
+        <span class="tl-time">13:30</span>
+        <p class="tl-title" data-i18n="cocktail">Cóctel de bienvenida</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-icon-container"><img src="IMG/banquet.png"></div>
+      <div class="tl-content">
+        <span class="tl-time">14:30</span>
+        <p class="tl-title" data-i18n="banquete">Banquete nupcial</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-icon-container"><img src="IMG/disco-ball.png"></div>
+      <div class="tl-content">
+        <span class="tl-time">19:00</span>
+        <p class="tl-title" data-i18n="baile">Baile y barra libre</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-icon-container"><img src="IMG/autobus-vuelta.PNG"></div>
+      <div class="tl-content">
+        <span class="tl-time">23:30</span>
+        <p class="tl-title" data-i18n="bus_vuelta">Bus de vuelta</p>
+      </div>
+    </div>
+
   </div>
 </section>
+
+<div class="separator"><i class="fa-solid fa-diamond"></i></div>
 
 <section id="ubicacion">
   <h2 data-i18n="ubicacion_titulo">Ubicación</h2>
-  <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
-    <p style="margin-bottom: 2px;"><strong>Restaurante El Nuevo Molino</strong></p>
-    <p style="font-size: 0.9rem; margin-top: 0;">Bo. Monseñor, 18, Puente Arce, Cantabria</p>
+  <div style="text-align: center;">
+    <p><strong>Restaurante El Nuevo Molino</strong></p>
+    <p style="font-size: 0.9rem;">Bo. Monseñor, 18, Puente Arce, Cantabria</p>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2894.460867746569!2d-3.9511098234151787!3d43.40609677111516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e38880b734fa1%3A0x4a8ec36a7fc73273!2sEl%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses3" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2894.622415177579!2d-3.9248446234057863!3d43.41103796839366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e39880b734e51%3A0x4a8e036b7f3b3273!2sRestaurante%20El%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
     </div>
-    <a href="https://maps.app.goo.gl/ChIJoU9zC4g4SQ0RczLHf2rDjks" target="_blank" class="btn-main" data-i18n="como_llegar">
-      <i class="fa-solid fa-location-dot"></i> Cómo llegar
-    </a>
+    <a href="https://maps.app.goo.gl/ChIJoU9zC4g4SQ0RczLHf2rDjks" target="_blank" class="btn-main" data-i18n="como_llegar">Cómo llegar</a>
   </div>
 </section>
+
+<div class="separator"><i class="fa-solid fa-diamond"></i></div>
 
 <section id="rsvp">
   <div style="text-align: center;">
     <h2 data-i18n="confirmar">¿Nos acompañas?</h2>
-    <p data-i18n="rsvp_p" style="font-size: 0.95rem;">Confirma antes del 1 de junio de 2026.</p>
-    <a href="https://forms.gle/2uurApQkp68dGx13A" target="_blank" class="btn-main" data-i18n="confirm_btn">
-      Confirmar Asistencia
-    </a>
+    <p data-i18n="rsvp_p">Confirma antes del 1 de junio de 2026.</p>
+    <a href="https://forms.gle/2uurApQkp68dGx13A" target="_blank" class="btn-main" data-i18n="confirm_btn">Confirmar Asistencia</a>
   </div>
 </section>
 
+<div class="separator"><i class="fa-solid fa-diamond"></i></div>
+
 <section id="regalo">
   <h2 data-i18n="regalo_titulo">Un detalle</h2>
-  <div class="card-container">
-    <div class="card-item" style="padding: 25px;">
+  <div class="timeline-card" style="text-align: center; padding: 30px;">
       <i class="fa-solid fa-heart" style="font-size: 1.5rem; color: var(--dorado); margin-bottom: 10px;"></i>
-      <p data-i18n="regalo_texto">Vuestra presencia es nuestro mejor regalo...</p>
+      <p data-i18n="regalo_texto" style="font-style: italic;">"Vuestra presencia es nuestro mejor regalo..."</p>
       <div class="iban-box" id="ibanText">ES12 3456 7890 1234 5678 9012</div>
       <button class="btn-copy" onclick="copyIban()" id="copyBtn" data-i18n="copiar">Copiar IBAN</button>
-    </div>
   </div>
 </section>
 
@@ -223,24 +243,20 @@
     es: { 
       nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_regalo: "Regalo", nav_asistencia: "Asistencia", nav_info: "Información Adicional", nav_ubicacion: "Ubicación",
       hero_date: "01 . 08 . 2026", nos_casamos: "¡Nos casamos!", itinerario: "Itinerario",
-      preboda_fecha: "31 de Julio de 2026", preboda: "Preboda",
-      bus_ida: "Bus desde Santander", ceremonia: "Ceremonia", cocktail: "Cóctel", banquete: "Banquete", baile: "Fiesta", bus_vuelta: "Bus de vuelta",
+      preboda: "Preboda", bus_ida: "Bus desde Santander", ceremonia: "Ceremonia", cocktail: "Cóctel", banquete: "Banquete", baile: "Fiesta", bus_vuelta: "Bus de vuelta",
       ubicacion_titulo: "Ubicación", como_llegar: "Cómo llegar",
       regalo_titulo: "Un detalle", regalo_texto: "Vuestra presencia en nuestro gran día es el mayor regalo que podríamos recibir. Sin embargo, si deseáis colaborar con nuestra nueva etapa y nuestro viaje de novios, os dejamos aquí cómo hacerlo.",
-      confirmar: "¿Nos acompañas?", rsvp_p: "Confirma antes del 1 de junio de 2026.", 
-      confirm_btn: "Confirmar Asistencia", copiar: "Copiar IBAN", copiado: "¡Copiado con cariño!",
+      confirmar: "¿Nos acompañas?", rsvp_p: "Confirma antes del 1 de junio de 2026.", confirm_btn: "Confirmar Asistencia", copiar: "Copiar IBAN", copiado: "¡Copiado con cariño!",
       time: ["Días","Hrs","Min","Seg"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️",
       bienvenida_texto: "“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables.”"
     },
     it: { 
       nav_inicio: "Inizio", nav_itinerario: "Programma", nav_regalo: "Regalo", nav_asistencia: "RSVP", nav_info: "Info Aggiuntive", nav_ubicacion: "Ubicazione",
       hero_date: "01 . 08 . 2026", nos_casamos: "Ci sposiamo!", itinerario: "Programma", 
-      preboda_fecha: "31 Luglio 2026", preboda: "Pre-matrimonio",
-      bus_ida: "Navetta da Santander", ceremonia: "Cerimonia", cocktail: "Aperitivo", banquete: "Banchetto", baile: "Festa", bus_vuelta: "Navetta di ritorno",
+      preboda: "Pre-matrimonio", bus_ida: "Navetta da Santander", ceremonia: "Cerimonia", cocktail: "Aperitivo", banquete: "Banchetto", baile: "Festa", bus_vuelta: "Navetta di ritorno",
       ubicacion_titulo: "Ubicazione", como_llegar: "Come arrivare",
       regalo_titulo: "Un pensiero", regalo_texto: "La vostra presenza nel nostro grande giorno è il regalo più bello che potremmo ricevere. Tuttavia, se desiderate contribuire alla nostra nuova vita insieme e al nostro viaggio di nozze, ecco come potete fare.",
-      confirmar: "Sarai dei nostri?", rsvp_p: "Conferma entro il 1° giugno 2026.", 
-      confirm_btn: "Conferma Partecipazione", copiar: "Copia IBAN", copiado: "Copiato con affetto!",
+      confirmar: "Sarai dei nostri?", rsvp_p: "Conferma entro il 1° giugno 2026.", confirm_btn: "Conferma Partecipazione", copiar: "Copia IBAN", copiado: "Copiato con affetto!",
       time: ["Giorni","Ore","Min","Sec"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️",
       bienvenida_texto: "“Ci sono momenti nella vita che sono speciali di per sé, ma condividerli con le persone che amiamo di più li rende indimenticabili.”"
     }
@@ -254,7 +270,6 @@
     });
     updateCountdown();
   }
-
   function irATurismo() { window.location.href = currentLang === 'it' ? 'turismo-it.html' : 'turismo-es.html'; }
   function copyIban() {
     const iban = document.getElementById("ibanText").innerText;
@@ -263,27 +278,17 @@
     btn.innerText = translations[currentLang].copiado;
     setTimeout(() => { btn.innerText = translations[currentLang].copiar; }, 2000);
   }
-  function scrollToId(id) { window.scrollTo({ top: document.getElementById(id).offsetTop - 50, behavior: "smooth" }); }
+  function scrollToId(id) { window.scrollTo({ top: document.getElementById(id).offsetTop - 70, behavior: "smooth" }); }
 
   function updateCountdown() {
     const target = new Date("2026-08-01T12:30:00");
     const diff = target - new Date();
     const el = document.getElementById("countdown");
     if (diff <= 0) { el.innerHTML = "<h3>¡Es hoy! 🎉</h3>"; return; }
-    
-    const d = Math.floor(diff/86400000), 
-          h = Math.floor((diff%86400000)/3600000), 
-          m = Math.floor((diff%3600000)/60000),
-          s = Math.floor((diff%60000)/1000);
-          
+    const d = Math.floor(diff/86400000), h = Math.floor((diff%86400000)/3600000), m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
     const t = translations[currentLang].time;
-    el.innerHTML = `
-      <div class="box"><span>${d}</span><small>${t[0]}</small></div>
-      <div class="box"><span>${h}</span><small>${t[1]}</small></div>
-      <div class="box"><span>${m}</span><small>${t[2]}</small></div>
-      <div class="box"><span>${s}</span><small>${t[3]}</small></div>`;
+    el.innerHTML = `<div class="box"><span>${d}</span><small>${t[0]}</small></div><div class="box"><span>${h}</span><small>${t[1]}</small></div><div class="box"><span>${m}</span><small>${t[2]}</small></div><div class="box"><span>${s}</span><small>${t[3]}</small></div>`;
   }
-  
   setInterval(updateCountdown, 1000);
   updateCountdown();
 </script>
