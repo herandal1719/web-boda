@@ -54,27 +54,26 @@
     /* SECCIONES */
     section { padding: 25px 20px; max-width: 800px; margin: auto; }
 
-    /* COUNTDOWN CUADRADO Y RESPONSIVE */
+    /* COUNTDOWN */
     .countdown-section { padding-top: 35px; text-align: center; }
     .countdown { 
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 columnas en desktop */
+        grid-template-columns: repeat(4, 1fr);
         gap: 10px;
         max-width: 400px;
         margin: 15px auto;
-        animation: fadeInScale 1s ease-out; 
     }
     
     @media (max-width: 480px) {
         .countdown { 
-            grid-template-columns: repeat(2, 1fr); /* 2x2 en móvil */
+            grid-template-columns: repeat(2, 1fr);
             max-width: 180px;
         }
     }
 
     .box { 
       aspect-ratio: 1/1;
-      border-radius: 12px; /* Cuadrado con bordes suaves */
+      border-radius: 12px;
       background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; 
       border: 2px solid var(--dorado); box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
@@ -88,6 +87,17 @@
       width: 100%; max-width: 450px; display: flex; flex-direction: column; align-items: center; text-align: center;
       gap: 5px; border-top: 3px solid var(--dorado);
     }
+    
+    /* TARJETA INVERTIDA PARA PREBODA */
+    .card-preboda {
+      background: var(--dorado) !important;
+      color: white !important;
+      border-top: none !important;
+    }
+    .card-preboda .hora, .card-preboda p { color: white !important; }
+    .card-preboda .it-img { filter: brightness(0) invert(1) !important; }
+    .card-preboda .preboda-date { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; font-weight: bold; }
+
     .it-img { width: 35px; height: 35px; filter: invert(86%) sepia(13%) saturate(1048%) hue-rotate(331deg) brightness(97%) contrast(91%); }
     .hora { font-weight: 700; color: var(--dorado); font-size: 1rem; }
 
@@ -154,6 +164,13 @@
 <section id="itinerario">
   <h2 data-i18n="itinerario">Itinerario</h2>
   <div class="card-container">
+    <div class="card-item card-preboda">
+      <span class="preboda-date" data-i18n="preboda_fecha">31 de Julio de 2026</span>
+      <img src="IMG/cheers.png" class="it-img">
+      <span class="hora">20:30</span>
+      <p data-i18n="preboda">Preboda</p>
+    </div>
+
     <div class="card-item"><img src="IMG/autobus.png" class="it-img"><span class="hora">12:00</span><p data-i18n="bus_ida">Bus desde Santander</p></div>
     <div class="card-item"><img src="IMG/marriage.png" class="it-img"><span class="hora">12:30</span><p data-i18n="ceremonia">Ceremonia</p></div>
     <div class="card-item"><img src="IMG/cheers.png" class="it-img"><span class="hora">13:30</span><p data-i18n="cocktail">Cóctel de bienvenida</p></div>
@@ -169,7 +186,7 @@
     <p style="margin-bottom: 2px;"><strong>Restaurante El Nuevo Molino</strong></p>
     <p style="font-size: 0.9rem; margin-top: 0;">Bo. Monseñor, 18, Puente Arce, Cantabria</p>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2899.6469850117367!2d-3.9392185!3d43.4053249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e38880b734f89%3A0x4a8cc36b7f733273!2sRestaurante%20El%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1715850000000" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2894.460867746569!2d-3.9511098234151787!3d43.40609677111516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e38880b734fa1%3A0x4a8ec36a7fc73273!2sEl%20Nuevo%20Molino!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses3" allowfullscreen="" loading="lazy"></iframe>
     </div>
     <a href="https://maps.app.goo.gl/ChIJoU9zC4g4SQ0RczLHf2rDjks" target="_blank" class="btn-main" data-i18n="como_llegar">
       <i class="fa-solid fa-location-dot"></i> Cómo llegar
@@ -192,7 +209,7 @@
   <div class="card-container">
     <div class="card-item" style="padding: 25px;">
       <i class="fa-solid fa-heart" style="font-size: 1.5rem; color: var(--dorado); margin-bottom: 10px;"></i>
-      <p data-i18n="regalo_texto" style="font-size: 1rem; font-style: italic; line-height: 1.6;">"Vuestra presencia es nuestro mejor regalo..."</p>
+      <p data-i18n="regalo_texto">Vuestra presencia es nuestro mejor regalo...</p>
       <div class="iban-box" id="ibanText">ES12 3456 7890 1234 5678 9012</div>
       <button class="btn-copy" onclick="copyIban()" id="copyBtn" data-i18n="copiar">Copiar IBAN</button>
     </div>
@@ -206,24 +223,26 @@
     es: { 
       nav_inicio: "Inicio", nav_itinerario: "Itinerario", nav_regalo: "Regalo", nav_asistencia: "Asistencia", nav_info: "Información Adicional", nav_ubicacion: "Ubicación",
       hero_date: "01 . 08 . 2026", nos_casamos: "¡Nos casamos!", itinerario: "Itinerario",
-      bienvenida_texto: "“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables.”",
+      preboda_fecha: "31 de Julio de 2026", preboda: "Preboda",
       bus_ida: "Bus desde Santander", ceremonia: "Ceremonia", cocktail: "Cóctel", banquete: "Banquete", baile: "Fiesta", bus_vuelta: "Bus de vuelta",
       ubicacion_titulo: "Ubicación", como_llegar: "Cómo llegar",
       regalo_titulo: "Un detalle", regalo_texto: "Vuestra presencia en nuestro gran día es el mayor regalo que podríamos recibir. Sin embargo, si deseáis colaborar con nuestra nueva etapa y nuestro viaje de novios, os dejamos aquí cómo hacerlo.",
       confirmar: "¿Nos acompañas?", rsvp_p: "Confirma antes del 1 de junio de 2026.", 
       confirm_btn: "Confirmar Asistencia", copiar: "Copiar IBAN", copiado: "¡Copiado con cariño!",
-      time: ["Días","Hrs","Min","Seg"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️"
+      time: ["Días","Hrs","Min","Seg"], footer_text: "© 2026 Claudia & Alberto · Hecho con ❤️",
+      bienvenida_texto: "“Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más queremos los hace inolvidables.”"
     },
     it: { 
       nav_inicio: "Inizio", nav_itinerario: "Programma", nav_regalo: "Regalo", nav_asistencia: "RSVP", nav_info: "Info Aggiuntive", nav_ubicacion: "Ubicazione",
       hero_date: "01 . 08 . 2026", nos_casamos: "Ci sposiamo!", itinerario: "Programma", 
-      bienvenida_texto: "“Ci sono momenti nella vita che sono speciali di per sé, ma condividerli con le persone che amiamo di più li rende indimenticabili.”",
+      preboda_fecha: "31 Luglio 2026", preboda: "Pre-matrimonio",
       bus_ida: "Navetta da Santander", ceremonia: "Cerimonia", cocktail: "Aperitivo", banquete: "Banchetto", baile: "Festa", bus_vuelta: "Navetta di ritorno",
       ubicacion_titulo: "Ubicazione", como_llegar: "Come arrivare",
       regalo_titulo: "Un pensiero", regalo_texto: "La vostra presenza nel nostro grande giorno è il regalo più bello che potremmo ricevere. Tuttavia, se desiderate contribuire alla nostra nuova vita insieme e al nostro viaggio di nozze, ecco come potete fare.",
       confirmar: "Sarai dei nostri?", rsvp_p: "Conferma entro il 1° giugno 2026.", 
       confirm_btn: "Conferma Partecipazione", copiar: "Copia IBAN", copiado: "Copiato con affetto!",
-      time: ["Giorni","Ore","Min","Sec"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️"
+      time: ["Giorni","Ore","Min","Sec"], footer_text: "© 2026 Claudia & Alberto · Fatto con ❤️",
+      bienvenida_texto: "“Ci sono momenti nella vita che sono speciali di per sé, ma condividerli con le persone che amiamo di più li rende indimenticabili.”"
     }
   };
 
