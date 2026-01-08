@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Claudia & Alberto | Boda</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -31,12 +30,12 @@
     .lang-switch { color: var(--dorado); border-left: 1px solid #ddd; padding-left: 8px !important; }
 
     header { height: 75vh; min-height: 450px; position: relative; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; color: white; overflow: hidden; }
-    .hero-images { position: absolute; inset: 0; display: flex; }
+    .hero-images { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; }
     .hero-img { width: 50%; background-size: cover; background-position: center 20%; filter: brightness(0.8); }
-    header::after { content: ""; position: absolute; bottom: 0; width: 100%; height: 35%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
+    header::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 35%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
     .hero-content { position: relative; z-index: 3; padding-bottom: 25px; }
-    header h1 { color: white; font-size: clamp(2rem, 8vw, 3.5rem); margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-    header p { color: white; font-size: 1.1rem; letter-spacing: 4px; font-family: 'Playfair Display', serif; }
+    header h1 { color: white; font-size: clamp(2rem, 8vw, 3.5rem); margin: 0; }
+    header p { color: white; font-size: 1.1rem; letter-spacing: 4px; }
 
     section { padding: 10px 20px; max-width: 800px; margin: auto; }
     .welcome-text { text-align: center; font-style: italic; font-size: 1rem; max-width: 600px; margin: auto; line-height: 1.6; }
@@ -58,12 +57,12 @@
 
 <header id="home">
   <div class="hero-images">
-    <div class="hero-img" style="background-image:url('IMG/foto1.jpeg')"></div>
-    <div class="hero-img" style="background-image:url('IMG/foto2.jpeg')"></div>
+    <div class="hero-img" style="background-image: url('IMG/foto1.jpeg');"></div>
+    <div class="hero-img" style="background-image: url('IMG/foto2.jpeg');"></div>
   </div>
   <div class="hero-content">
     <h1>Claudia & Alberto 💕</h1>
-    <p>01 · 08 · 2026</p>
+    <p>01 . 08 . 2026</p>
   </div>
 </header>
 
@@ -87,13 +86,13 @@ const translations = {
     bienvenida_texto:
       "Algunas historias empiezan muy lejos de casa. La nuestra comenzó en Grecia, en 2015, cuando dos caminos —Italia y España— se cruzaron casi sin saber que no volverían a separarse.\n\n" +
       "Después llegaron los viajes, las risas, las decisiones compartidas y las ganas de seguir avanzando juntos.\n\n" +
-      "Hoy celebramos lo más importante: el camino que seguimos construyendo, y la suerte de tenerte cerca."
+      "Si estás aquí es porque formas parte de ese camino y ocupas un lugar muy especial en nuestras vidas. Por eso nos hace tanta ilusión que nos acompañes en uno de los días más importantes para nosotros."
   },
   it: {
     bienvenida_texto:
       "Alcune storie iniziano lontano da casa. La nostra è cominciata in Grecia, nel 2015, quando due strade —Italia e Spagna— si sono incontrate senza sapere che non si sarebbero più separate.\n\n" +
       "Poi sono arrivati i viaggi, le risate, le scelte condivise e il desiderio di continuare insieme.\n\n" +
-      "Oggi celebriamo ciò che conta davvero: il cammino che stiamo costruendo e la fortuna di averti con noi."
+      "Se sei qui è perché fai parte di questo percorso e occupi un posto speciale nelle nostre vite. Per questo siamo felici di condividere con te uno dei giorni più importanti per noi."
   }
 };
 
